@@ -1,0 +1,26 @@
+:root {
+  /* COLORS */
+  --color-bg-app: #2f5f8f; /* medium blue leather base */
+  --color-bg-header: #24496e; /* darker blue */
+  --color-bg-panel: #3e5f78; /* grayish blue */
+
+  /* CHROME EFFECT */
+  --color-chrome-light: #d9e4ec;
+  --color-chrome-mid: #9fb3c3;
+  --color-chrome-dark: #5f6f7c;
+
+  /* TEXT */
+  --color-text-primary: #e6f0f7;
+
+  /* SPACING */
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+
+  /* LAYOUT */
+  --panel-radius: 10px;
+  --border-width: 2px;
+
+  /* FONT */
+  --font-primary: 'Trebuchet MS', 'Segoe UI', sans-serif;
+}
