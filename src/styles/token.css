@@ -1,3 +1,5 @@
+/* src/styles/token.css */
+
 :root {
   /* COLORS */
   --color-bg-app: #2f5f8f; /* medium blue leather base */
@@ -20,6 +22,15 @@
   /* LAYOUT */
   --panel-radius: 10px;
   --border-width: 2px;
+
+  /* BRAND MARK */
+  --brand-stripe-height: 52px;
+  --brand-stripe-gap: 6px;
+  --brand-stripe-width-bold: 14px;
+  --brand-stripe-width-medium: 10px;
+  --brand-stripe-width-thin: 6px;
+  --brand-stripe-radius: 2px;
+  --brand-stripe-angle: -10deg;
 
   /* FONT */
   --font-primary: 'Trebuchet MS', 'Segoe UI', sans-serif;
