@@ -1,11 +1,16 @@
+// src/layout/AppLayout.jsx
+
 import styles from './AppLayout.module.css';
+import AppBrand from '../components/AppBrand';
+import AssetSelector from '../components/AssetSelector';
 
 export default function AppLayout() {
   return (
     <div className={styles.app}>
       {/* HEADER */}
       <header className={`${styles.header} chrome`}>
-        <div>Asset Selector (placeholder)</div>
+        <AppBrand />
+        <AssetSelector />
       </header>
 
       {/* MAIN CONTENT */}

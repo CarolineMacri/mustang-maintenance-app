@@ -10,6 +10,10 @@
 .header {
   background: var(--color-bg-header);
   padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
 }
 
 /* MAIN LAYOUT */
@@ -39,7 +43,6 @@
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
-
   display: flex;
   align-items: center;
   justify-content: center;
