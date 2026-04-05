@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1,
+    "name": "Car",
+    "make": "Ford",
+    "model": "Mustang GT",
+    "year": 2020,
+    "vinSerialNo": "1FA6P8CF0L5100001",
+    "custom1": "Garage Kept",
+    "custom2": null,
+    "notes": "Primary vehicle, weekend use"
+  },
+  {
+    "id": 2,
+    "name": "Lawnmower",
+    "make": "Honda",
+    "model": "HRX217VKA",
+    "year": null,
+    "vinSerialNo": null,
+    "custom1": null,
+    "custom2": null,
+    "notes": "Used weekly during growing season"
+  },
+  {
+    "id": 3,
+    "name": "Wood Chipper",
+    "make": "Champion",
+    "model": "100137",
+    "year": 2022,
+    "vinSerialNo": null,
+    "custom1": "Electric Start",
+    "custom2": "Stored in Shed",
+    "notes": null
+  }
+]
