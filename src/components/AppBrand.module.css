@@ -48,5 +48,6 @@
   color: var(--color-text-primary);
   font-family: var(--font-primary);
   font-style: italic;
+  font-size: x-large;
   letter-spacing: 0.04em;
 }
