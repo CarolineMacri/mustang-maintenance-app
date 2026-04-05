@@ -11,10 +11,8 @@ import './styles/utilities.css';
 function App() {
   const [assets, setAssets] = useState(initialAssets);
   const [maintenance, setMaintenance] = useState(initialMaintenance);
-  console.log(assets);
-  console.log(maintenance);
 
-  return <AppLayout />;
+  return <AppLayout assets={assets} />;
 }
 
 export default App;
