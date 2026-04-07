@@ -1,0 +1,159 @@
+{
+  "assets": [
+    {
+      "id": 1,
+      "name": "Car",
+      "make": "Ford",
+      "model": "Mustang GT",
+      "year": 2020,
+      "vinSerialNo": "1FA6P8CF0L5100001",
+      "custom1": "Garage Kept",
+      "custom2": null,
+      "notes": "Primary vehicle, weekend use"
+    },
+    {
+      "id": 2,
+      "name": "Lawnmower",
+      "make": "Honda",
+      "model": "HRX217VKA",
+      "year": null,
+      "vinSerialNo": null,
+      "custom1": null,
+      "custom2": null,
+      "notes": "Used weekly during growing season"
+    },
+    {
+      "id": 3,
+      "name": "Wood Chipper",
+      "make": "Champion",
+      "model": "100137",
+      "year": 2022,
+      "vinSerialNo": null,
+      "custom1": "Electric Start",
+      "custom2": "Stored in Shed",
+      "notes": null
+    }
+  ],
+  "maintenance": [
+    {
+      "id": 1,
+      "assetId": 1,
+      "description": "oil and filter change",
+      "status": "complete",
+      "date": "2025-01-10",
+      "notes": "Full synthetic oil"
+    },
+    {
+      "id": 2,
+      "assetId": 1,
+      "description": "front brake pad replacement",
+      "status": "complete",
+      "date": "2025-02-15",
+      "notes": "Pads replaced, rotors good"
+    },
+    {
+      "id": 3,
+      "assetId": 1,
+      "description": "annual safety inspection",
+      "status": "inProcess",
+      "date": "2025-03-20",
+      "notes": null
+    },
+    {
+      "id": 4,
+      "assetId": 1,
+      "description": "tire rotation",
+      "status": "pending",
+      "date": "2025-04-10",
+      "notes": null
+    },
+    {
+      "id": 5,
+      "assetId": 1,
+      "description": "coolant system check",
+      "status": "pending",
+      "date": "2025-05-01",
+      "notes": "Check levels and hoses"
+    },
+    {
+      "id": 6,
+      "assetId": 2,
+      "description": "blade sharpening",
+      "status": "complete",
+      "date": "2025-03-01",
+      "notes": null
+    },
+    {
+      "id": 7,
+      "assetId": 2,
+      "description": "oil change",
+      "status": "complete",
+      "date": "2025-03-15",
+      "notes": null
+    },
+    {
+      "id": 8,
+      "assetId": 2,
+      "description": "carburetor replacement",
+      "status": "inProcess",
+      "date": "2025-03-25",
+      "notes": "Engine was surging"
+    },
+    {
+      "id": 9,
+      "assetId": 2,
+      "description": "air filter replacement",
+      "status": "pending",
+      "date": "2025-04-05",
+      "notes": null
+    },
+    {
+      "id": 10,
+      "assetId": 2,
+      "description": "winterize equipment",
+      "status": "pending",
+      "date": "2025-04-20",
+      "notes": "Fuel stabilizer and drain"
+    },
+    {
+      "id": 11,
+      "assetId": 3,
+      "description": "initial inspection",
+      "status": "complete",
+      "date": "2025-02-01",
+      "notes": "All components checked"
+    },
+    {
+      "id": 12,
+      "assetId": 3,
+      "description": "blade inspection and sharpening",
+      "status": "complete",
+      "date": "2025-02-20",
+      "notes": null
+    },
+    {
+      "id": 13,
+      "assetId": 3,
+      "description": "drive belt inspection",
+      "status": "inProcess",
+      "date": "2025-03-10",
+      "notes": "Slight wear observed"
+    },
+    {
+      "id": 14,
+      "assetId": 3,
+      "description": "lubrication of moving parts",
+      "status": "pending",
+      "date": "2025-04-01",
+      "notes": null
+    },
+    {
+      "id": 15,
+      "assetId": 3,
+      "description": "fastener and bolt tightening",
+      "status": "pending",
+      "date": "2025-04-15",
+      "notes": null
+    }
+  ]
+}
