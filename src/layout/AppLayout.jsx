@@ -2,6 +2,7 @@
 import styles from './AppLayout.module.css';
 import AppBrand from '../components/AppBrand';
 import AssetSelector from '../components/AssetSelector';
+import AssetPanel from '../components/AssetPanel';
 
 export default function AppLayout({
   assets,
@@ -25,17 +26,7 @@ export default function AppLayout({
       <main className={styles.main}>
         {/* LEFT PANEL (1/3) */}
         <section className={`${styles.leftPanel} chrome`}>
-          <h2>Assets</h2>
-          {selectedAsset ? (
-            <>
-              <p>{selectedAsset.name}</p>
-              <p>
-                {selectedAsset.make} {selectedAsset.model}
-              </p>
-            </>
-          ) : (
-            <p>No asset selected</p>
-          )}
+          <AssetPanel selectedAsset={selectedAsset} />
         </section>
 
         {/* RIGHT PANEL (2/3) */}
