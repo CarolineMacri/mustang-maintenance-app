@@ -3,11 +3,13 @@ import styles from './AppLayout.module.css';
 import AppBrand from '../components/AppBrand';
 import AssetSelector from '../components/AssetSelector';
 import AssetPanel from '../components/AssetPanel';
+import MaintenancePanel from '../components/MaintenancePanel';
 
 export default function AppLayout({
   assets,
   selectedAsset,
   selectedAssetId,
+  selectedMaintenanceRecords,
   onSelectAsset,
 }) {
   return (
@@ -31,8 +33,7 @@ export default function AppLayout({
 
         {/* RIGHT PANEL (2/3) */}
         <section className={`${styles.rightPanel} chrome`}>
-          <h2>Maintenance Records</h2>
-          <p>Table placeholder</p>
+          <MaintenancePanel records={selectedMaintenanceRecords} />
 
           {/* MODAL PLACEHOLDER */}
           <div className={styles.modalBackdrop}>

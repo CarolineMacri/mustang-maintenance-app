@@ -58,11 +58,14 @@ function App() {
       ? []
       : maintenance.filter((record) => record.assetId === selectedAssetId);
 
+  console.log(selectedMaintenanceRecords);
+
   return (
     <AppLayout
       assets={assets}
       selectedAsset={selectedAsset}
       selectedAssetId={selectedAsset ? selectedAssetId : ''}
+      selectedMaintenanceRecords={selectedMaintenanceRecords}
       onSelectAsset={setSelectedAssetId}
     />
   );
