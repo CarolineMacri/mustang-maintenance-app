@@ -23,3 +23,7 @@ ChatGPTprompts
 *.njsproj
 *.sln
 *.sw?
+.editorconfig
+.gitattributes
+.gitignore
+.gitignore

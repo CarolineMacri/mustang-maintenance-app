@@ -1,4 +1,4 @@
-// src/App.jsx//
+// src/App.jsx////
 
 import { useState, useEffect } from 'react';
 import initialMaintenance from './data/maintenance.json';
@@ -26,9 +26,20 @@ function App() {
         const assetsData = await assetsResponse.json();
         const maintenanceData = await maintenanceResponse.json();
 
-        setAssets(assetsData);
-        setMaintenance(maintenanceData);
-        setSelectedAssetId(assetsData[0]?.id ?? null);
+        const normalizedAssets = assetsData.map((asset) => ({
+          ...asset,
+          id: Number(asset.id),
+        }));
+
+        const normalizedMaintenance = maintenanceData.map((record) => ({
+          ...record,
+          id: Number(record.id),
+          assetId: Number(record.assetId),
+        }));
+
+        setAssets(normalizedAssets);
+        setMaintenance(normalizedMaintenance);
+        setSelectedAssetId(Number(normalizedAssets[0]?.id) ?? null);
       } catch (error) {
         alert('could not load asset and maintenance data');
         setAssets([]);
@@ -39,8 +50,13 @@ function App() {
     loadData();
   }, []);
 
-  const selectedAsset =
-    assets.find((asset) => asset.id === selectedAssetId) ?? null;
+  const selectedAsset = assets.find(
+    (asset) => asset.id === selectedAssetId ?? null,
+  );
+  const selectedMaintenanceRecords =
+    selectedAssetId === null
+      ? []
+      : maintenance.filter((record) => record.assetId === selectedAssetId);
 
   return (
     <AppLayout
