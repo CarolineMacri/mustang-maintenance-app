@@ -1,7 +1,35 @@
+import { useEffect, useState } from 'react';
 import PanelCard from './PanelCard';
+import styles from './AssetPanel.module.css';
+
+const emptyForm = {
+  name: '',
+  make: '',
+  model: '',
+};
 
 export default function AssetPanel({ selectedAsset }) {
+  const [formValues, setFormValues] = useState(emptyForm);
+
+  useEffect(() => {
+    if (!selectedAsset) {
+      setFormValues(emptyForm);
+      return;
+    }
+
+    setFormValues({
+      name: selectedAsset.name,
+      make: selectedAsset.make,
+      model: selectedAsset.model,
+    });
+  }, [selectedAsset]);
+
   const isEmpty = !selectedAsset;
+
+  function handleChange(event) {
+    const { name, value } = event.target;
+    setFormValues((currentValues) => ({ ...currentValues, [name]: value }));
+  }
 
   return (
     <PanelCard>
@@ -11,25 +39,54 @@ export default function AssetPanel({ selectedAsset }) {
 
       <PanelCard.Body>
         {isEmpty ? (
-          <>
+          <div className={styles.emptyState}>
             <p>No asset selected</p>
-            <p>Field placeholder</p>
-            <p>Field placeholder</p>
-          </>
+            <p>Select an asset from the header to view it's details</p>
+          </div>
         ) : (
-          <>
-            <p>{selectedAsset.name}</p>
-            <p>
-              {selectedAsset.make} {selectedAsset.model}
-            </p>
-            <p>Field placeholder</p>
-          </>
+          <form className={styles.form}>
+            <label className={styles.field}>
+              <span className={styles.label}>Name</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="name"
+                value={formValues.name}
+                onChange={handleChange}
+              />
+            </label>
+
+            <label className={styles.field}>
+              <span className={styles.label}>Make</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="make"
+                value={formValues.make}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
+              <span className={styles.label}>Model</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="model"
+                value={formValues.model}
+                onChange={handleChange}
+              />
+            </label>
+          </form>
         )}
       </PanelCard.Body>
 
       <PanelCard.Footer>
-        <button type="button">Cancel</button>
-        <button type="button">Save</button>
+        <button type="button" disabled={isEmpty}>
+          Cancel
+        </button>
+        <button type="button" disabled={isEmpty}>
+          Save
+        </button>
       </PanelCard.Footer>
     </PanelCard>
   );

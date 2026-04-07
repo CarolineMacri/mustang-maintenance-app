@@ -1,4 +1,5 @@
 // src/App.jsx
+//
 import { useState } from 'react';
 import initialMaintenance from './data/maintenance.json';
 import initialAssets from './data/assets.json';
@@ -10,6 +11,7 @@ import './styles/utilities.css';
 
 function App() {
   const [assets, setAssets] = useState(initialAssets);
+  // const [assets, setAssets] = useState([]);
   const [maintenance, setMaintenance] = useState(initialMaintenance);
   const [selectedAssetId, setSelectedAssetId] = useState(
     initialAssets[0]?.id ?? null,
