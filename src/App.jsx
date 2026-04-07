@@ -1,5 +1,5 @@
+// src/App.jsx
 import { useState } from 'react';
-
 import initialMaintenance from './data/maintenance.json';
 import initialAssets from './data/assets.json';
 
@@ -11,8 +11,21 @@ import './styles/utilities.css';
 function App() {
   const [assets, setAssets] = useState(initialAssets);
   const [maintenance, setMaintenance] = useState(initialMaintenance);
+  const [selectedAssetId, setSelectedAssetId] = useState(
+    initialAssets[0]?.id ?? null,
+  );
 
-  return <AppLayout assets={assets} />;
+  const selectedAsset =
+    assets.find((asset) => asset.id === selectedAssetId) ?? null;
+
+  return (
+    <AppLayout
+      assets={assets}
+      selectedAsset={selectedAsset}
+      selectedAssetId={selectedAsset ? selectedAssetId : ''}
+      onSelectAsset={setSelectedAssetId}
+    />
+  );
 }
 
 export default App;

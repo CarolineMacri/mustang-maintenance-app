@@ -3,13 +3,22 @@ import styles from './AppLayout.module.css';
 import AppBrand from '../components/AppBrand';
 import AssetSelector from '../components/AssetSelector';
 
-export default function AppLayout({ assets }) {
+export default function AppLayout({
+  assets,
+  selectedAsset,
+  selectedAssetId,
+  onSelectAsset,
+}) {
   return (
     <div className={styles.app}>
       {/* HEADER */}
       <header className={`${styles.header} chrome`}>
         <AppBrand />
-        <AssetSelector assets={assets} />
+        <AssetSelector
+          assets={assets}
+          selectedAssetId={selectedAssetId}
+          onSelectAsset={onSelectAsset}
+        />
       </header>
 
       {/* MAIN CONTENT */}
@@ -17,7 +26,16 @@ export default function AppLayout({ assets }) {
         {/* LEFT PANEL (1/3) */}
         <section className={`${styles.leftPanel} chrome`}>
           <h2>Assets</h2>
-          <p>Asset panel (add/edit/delete)</p>
+          {selectedAsset ? (
+            <>
+              <p>{selectedAsset.name}</p>
+              <p>
+                {selectedAsset.make} {selectedAsset.model}
+              </p>
+            </>
+          ) : (
+            <p>No asset selected</p>
+          )}
         </section>
 
         {/* RIGHT PANEL (2/3) */}

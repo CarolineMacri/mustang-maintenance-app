@@ -5,7 +5,11 @@ function formatAssetLabel(asset) {
   return `${asset.name} - ${asset.make} ${asset.model}`;
 }
 
-export default function AssetSelector({ assets = [] }) {
+export default function AssetSelector({
+  assets = [],
+  selectedAssetId = '',
+  onSelectAsset,
+}) {
   const hasAssets = assets.length > 0;
 
   return (
@@ -18,19 +22,16 @@ export default function AssetSelector({ assets = [] }) {
         <select
           id="asset-selector"
           className={styles.control}
-          defaultValue={hasAssets ? formatAssetLabel(assets[0]) : ''}
+          value={hasAssets ? selectedAssetId : ''}
+          onChange={(event) => onSelectAsset(Number(event.target.value))}
           disabled={!hasAssets}
         >
           {hasAssets ? (
-            assets.map((asset) => {
-              const label = formatAssetLabel(asset);
-
-              return (
-                <option key={asset.id} value={label}>
-                  {label}
-                </option>
-              );
-            })
+            assets.map((asset) => (
+              <option key={asset.id} value={asset.id}>
+                {formatAssetLabel(asset)}
+              </option>
+            ))
           ) : (
             <option value="">No assets available</option>
           )}
