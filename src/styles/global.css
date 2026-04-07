@@ -12,13 +12,3 @@ body {
   font-family: var(--font-primary);
   font-style: italic;
 }
-
-/* Chrome-style border utility */
-.chrome {
-  border: var(--border-width) solid var(--color-chrome-mid);
-  border-radius: var(--panel-radius);
-  box-shadow:
-    inset 0 1px 0 var(--color-chrome-light),
-    inset 0 -1px 0 var(--color-chrome-dark),
-    0 2px 4px rgba(0, 0, 0, 0.3);
-}
