@@ -33,6 +33,17 @@
       "custom2": "Stored in Shed",
       "notes": null
     }
+    {
+      "id": 4,
+      "name": "Table Saw",
+      "make": "Delta",
+      "model": "36-715 Unifence",
+      "year": 1991,
+      "vinSerialNo": null,
+      "custom1": "220V",
+      "custom2": "Stored in Shed",
+      "notes": null
+    }
   ],
   "maintenance": [
     {
