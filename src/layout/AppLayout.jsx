@@ -36,11 +36,11 @@ export default function AppLayout({
           <MaintenancePanel records={selectedMaintenanceRecords} />
 
           {/* MODAL PLACEHOLDER */}
-          <div className={styles.modalBackdrop}>
+          {/* <div className={styles.modalBackdrop}>
             <div className={`${styles.modal} chrome`}>
               <p>Modal (add/edit record)</p>
             </div>
-          </div>
+          </div> */}
         </section>
       </main>
     </div>
