@@ -1,6 +1,7 @@
 // src/components/MaintenancePanel.jsx
 
 import PanelCard from './PanelCard';
+import MaintenanceTable from './MaintenanceTable';
 
 export default function MaintenancePanel({ records = [] }) {
   return (
@@ -11,7 +12,7 @@ export default function MaintenancePanel({ records = [] }) {
 
       <PanelCard.Body>
         {records.length > 0 ? (
-          records.map((record) => <p key={record.id}>{record.description}</p>)
+          <MaintenanceTable records={records} />
         ) : (
           <p>No maintenance records for this asset.</p>
         )}

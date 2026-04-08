@@ -1,5 +1,4 @@
 /* src/styles/token.css */
-
 :root {
   /* COLORS */
   --color-bg-app: #2f5f8f; /* medium blue leather base */
@@ -34,4 +33,12 @@
 
   /* FONT */
   --font-primary: 'Trebuchet MS', 'Segoe UI', sans-serif;
+
+  /* MAINTENANCE TABLE */
+  --color-maintenance-header-bg: #31516b;
+  --color-maintenance-row-bg: #5f8098;
+  --color-maintenance-row-hover-bg: #889faf;
+  --color-maintenance-notes-bg: #54748c;
+  --color-maintenance-button-bg: transparent;
+  --color-maintenance-button-text: var(--color-text-primary);
 }

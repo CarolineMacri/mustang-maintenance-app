@@ -1,0 +1,63 @@
+/* src/components/MaintenanceTable.module.css */
+
+.table {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.headerRow,
+.recordRow {
+  display: grid;
+  grid-template-columns: 120px 120px 1fr auto;
+  align-items: center;
+  column-gap: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+}
+
+.headerRow {
+  background: var(--color-maintenance-header-bg);
+}
+
+.recordRow {
+  background: var(--color-maintenance-row-bg);
+}
+
+.recordRow:hover {
+  background: var(--color-maintenance-row-hover-bg);
+}
+
+.body {
+  display: grid;
+  gap: var(--space-sm);
+}
+
+.rowGroup {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.rowGroup:hover .recordRow {
+  background: var(--color-maintenance-row-hover-bg);
+}
+
+.arrowHeader,
+.arrowCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notesRow {
+  padding: 0 var(--space-md) var(--space-sm);
+  background: var(--color-maintenance-notes-bg);
+}
+
+.notesContent {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.expandButton {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
