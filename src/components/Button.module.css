@@ -94,8 +94,3 @@
   display: inline-flex;
   align-items: center;
 }
-
-.iconOnly {
-  aspect-ratio: 1;
-  font-style: normal;
-}
