@@ -12,8 +12,11 @@
 
   /* TEXT */
   --color-text-primary: #e6f0f7;
+  --color-text-dark: #1f2a33;
+  --color-text-danger: #7a1f1f;
 
   /* SPACING */
+  --space-xs: 4px;
   --space-sm: 8px;
   --space-md: 16px;
   --space-lg: 24px;
@@ -41,4 +44,43 @@
   --color-maintenance-notes-bg: #54748c;
   --color-maintenance-button-bg: transparent;
   --color-maintenance-button-text: var(--color-text-primary);
+
+  /* BUTTON */
+  --button-radius: var(--panel-radius);
+  --button-gap: var(--space-sm);
+
+  --button-padding-y-sm: var(--space-xs);
+  --button-padding-x-xm: var(--space-sm);
+  --button-padding-y-md: var(--space-sm);
+  --button-padding-x-md: var(--space-md);
+
+  --button-icon-size: 32px;
+
+  --button-shadow-rest:
+    inset 0 1px 0 var(--color-chrome-light),
+    inset 0 -1px 0 var(--color-chrome-dark), 0 2px 4px rgba(0, 0, 0, 0.3);
+
+  --button-shadow-pressed:
+    inset 0 2px 0 var(--color-chrome-dark),
+    inset 0 -1px 0 var(--color-chrome-light);
+
+  --button-focus-ring: var(--color-chrome-light);
+
+  --button-disabled-opacity: 0.6;
+
+  --color-button-secondary-bg: #d9e4ec;
+  --color-button-secondary-hover-bg: #c7d6e1;
+  --color-button-secondary-text: var(--color-text-dark);
+
+  --color-button-primary-bg: #b8cad8;
+  --color-button-primary-hover-bg: #a7bdce;
+  --color-button-primary-text: #15324d;
+
+  --color-button-destructive-bg: #e7c3c3;
+  --color-button-destructive-hover-bg: #d9aaaa;
+  --color-button-destructive-text: var(--color-text-danger);
+
+  --color-button-utility-bg: #cfdbe4;
+  --color-button-utility-hover-bg: #becdd8;
+  --color-button-utility-text: var(--color-text-dark);
 }
