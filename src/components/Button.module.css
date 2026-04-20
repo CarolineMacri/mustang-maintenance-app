@@ -77,17 +77,24 @@
 }
 
 .small {
-  padding: var(--space-sm);
+  padding: var(--button-padding-y-sm) var(--button-padding-x-sm);
 }
 .medium {
-  padding: var(--space-sm) var(--space-md);
+  padding: var(--button-padding-y-md) var(--button-padding-x-md);
 }
 
 .icon {
+  width: var(--button-icon-size);
+  height: var(--button-icon-size);
+  padding: 0;
+}
+
+.iconGlyph {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-style: normal;
+  line-height: 1;
 }
 
 .label {

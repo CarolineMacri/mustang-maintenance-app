@@ -16,7 +16,7 @@ function Button({
     .join(' ');
   return (
     <button type={type} className={classes} {...props}>
-      {icon ? <span className={styles.icon}>{icon}</span> : null}
+      {icon ? <span className={styles.iconGlyph}>{icon}</span> : null}
       {children ? <span className={styles.label}>{children}</span> : null}
     </button>
   );
