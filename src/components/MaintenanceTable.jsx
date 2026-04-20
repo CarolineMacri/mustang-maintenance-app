@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import styles from './MaintenanceTable.module.css';
+import Button from './Button';
 
 export default function MaintenanceTable({ records }) {
   const [expandedRecordId, setExpandedRecordId] = useState(null);
@@ -32,20 +33,12 @@ export default function MaintenanceTable({ records }) {
                 <div role="cell">{record.status}</div>
                 <div role="cell">{record.description}</div>
                 <div role="cell" className={styles.arrowCell}>
-                  <button
-                    type="button"
-                    className={styles.expandButton}
+                  <Button
+                    role="utility"
+                    size="icon"
+                    icon={isExpanded ? '▲' : '▼'}
                     onClick={() => handleToggle(record.id)}
-                    aria-expanded={isExpanded}
-                    aria-controls={detailsId}
-                    aria-label={
-                      isExpanded
-                        ? 'Collapse maintenance notes'
-                        : 'Expand maintenance notes'
-                    }
-                  >
-                    {isExpanded ? '▲' : '▼'}
-                  </button>
+                  ></Button>
                 </div>
               </div>
 
