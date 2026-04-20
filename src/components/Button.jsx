@@ -9,24 +9,15 @@ function Button({
   role = 'secondary',
   size = 'medium',
   icon = null,
-  iconOnly = false,
   ...props
 }) {
-  const classes = [
-    styles.button,
-    styles[role],
-    styles[size],
-    iconOnly ? styles.iconOnly : '',
-    className,
-  ]
+  const classes = [styles.button, styles[role], styles[size], className]
     .filter(Boolean)
     .join(' ');
   return (
     <button type={type} className={classes} {...props}>
       {icon ? <span className={styles.icon}>{icon}</span> : null}
-      {!iconOnly && children ? (
-        <span className={styles.label}>{children}</span>
-      ) : null}
+      {children ? <span className={styles.label}>{children}</span> : null}
     </button>
   );
 }
