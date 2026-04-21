@@ -6,6 +6,9 @@ const emptyForm = {
   name: '',
   make: '',
   model: '',
+  part1: '',
+  part2: '',
+  part3: '',
 };
 
 export default function AssetPanel({ selectedAsset }) {
@@ -21,6 +24,9 @@ export default function AssetPanel({ selectedAsset }) {
       name: selectedAsset.name,
       make: selectedAsset.make,
       model: selectedAsset.model,
+      part1: selectedAsset.part1,
+      part2: selectedAsset.part2,
+      part3: selectedAsset.part3,
     });
   }, [selectedAsset]);
 
@@ -73,6 +79,36 @@ export default function AssetPanel({ selectedAsset }) {
                 type="text"
                 name="model"
                 value={formValues.model}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
+              <span className={styles.label}>Part 1</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="part1"
+                value={formValues.part1}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
+              <span className={styles.label}>Part 2</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="part2"
+                value={formValues.part2}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
+              <span className={styles.label}>Part 3</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="part3"
+                value={formValues.part3}
                 onChange={handleChange}
               />
             </label>
