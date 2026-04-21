@@ -1,13 +1,11 @@
-/* src/components/AssetPanel.module.css */
-
-.form {
+/* src/components/AssetPanel.module.css */.form {
   display: grid;
-  gap: var(--space-md);
+  gap: var(--space-sm);
 }
 
 .field {
   display: grid;
-  gap: var(--space-sm);
+  gap: var(--space-xs);
 }
 
 .label {
@@ -15,9 +13,10 @@
   color: var(--color-text-primary);
 }
 
-.input {
+.input,
+.textarea {
   width: 100%;
-  padding: var(--space-sm);
+  padding: var(--space-xs);
   border: var(--border-width) solid var(--color-chrome-mid);
   border-radius: var(--panel-radius);
   background: var(--color-bg-header);
@@ -26,9 +25,15 @@
   box-sizing: border-box;
 }
 
-.input:focus {
+.input:focus,
+.textarea:focus {
   outline: none;
   border-color: var(--color-chrome-light);
+}
+
+.textarea {
+  min-height: 120px;
+  resize: vertical;
 }
 
 .emptyState {

@@ -9,6 +9,7 @@ const emptyForm = {
   part1: '',
   part2: '',
   part3: '',
+  notes: '',
 };
 
 export default function AssetPanel({ selectedAsset }) {
@@ -27,6 +28,7 @@ export default function AssetPanel({ selectedAsset }) {
       part1: selectedAsset.part1,
       part2: selectedAsset.part2,
       part3: selectedAsset.part3,
+      notes: selectedAsset.notes ?? '',
     });
   }, [selectedAsset]);
 
@@ -109,6 +111,15 @@ export default function AssetPanel({ selectedAsset }) {
                 type="text"
                 name="part3"
                 value={formValues.part3}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
+              <span className={styles.label}>Notes</span>
+              <textarea
+                className={styles.textArea}
+                name="notes"
+                value={formValues.notes}
                 onChange={handleChange}
               />
             </label>
