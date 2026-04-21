@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import PanelCard from './PanelCard';
 import styles from './AssetPanel.module.css';
+import Button from './Button';
 
 const emptyForm = {
   name: '',
@@ -128,12 +129,12 @@ export default function AssetPanel({ selectedAsset }) {
       </PanelCard.Body>
 
       <PanelCard.Footer>
-        <button type="button" disabled={isEmpty}>
+        <Button role="secondary" disabled={isEmpty}>
           Cancel
-        </button>
-        <button type="button" disabled={isEmpty}>
+        </Button>
+        <Button role="primary" disabled={isEmpty}>
           Save
-        </button>
+        </Button>
       </PanelCard.Footer>
     </PanelCard>
   );
