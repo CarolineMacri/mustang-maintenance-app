@@ -7,8 +7,9 @@
       "model": "Mustang GT",
       "year": 2020,
       "vinSerialNo": "1FA6P8CF0L5100001",
-      "custom1": "Garage Kept",
-      "custom2": null,
+      "part1": "Garage Kept",
+      "part2": null,
+      "part3": null,
       "notes": "Primary vehicle, weekend use"
     },
     {
@@ -18,8 +19,9 @@
       "model": "HRX217VKA",
       "year": null,
       "vinSerialNo": null,
-      "custom1": null,
-      "custom2": null,
+      "part1": null,
+      "part2": null,
+      "part3": null,
       "notes": "Used weekly during growing season"
     },
     {
@@ -29,8 +31,9 @@
       "model": "100137",
       "year": 2022,
       "vinSerialNo": null,
-      "custom1": "Electric Start",
-      "custom2": "Stored in Shed",
+      "part1": "Electric Start",
+      "part2": "Stored in Shed",
+      "part3": null,
       "notes": null
     },
     {
@@ -40,8 +43,9 @@
       "model": "36-715 Unifence",
       "year": 1991,
       "vinSerialNo": null,
-      "custom1": "220V",
-      "custom2": "Stored in Shed",
+      "part1": "220V",
+      "part2": "Stored in Shed",
+      "part3": null,
       "notes": null
     }
   ],
@@ -52,6 +56,7 @@
       "description": "oil and filter change",
       "status": "complete",
       "date": "2025-01-10",
+      "difficulty":1,
       "notes": "Full synthetic oil"
     },
     {
@@ -60,6 +65,7 @@
       "description": "front brake pad replacement",
       "status": "complete",
       "date": "2025-02-15",
+      "difficulty":3,
       "notes": "Pads replaced, rotors good"
     },
     {
@@ -68,6 +74,7 @@
       "description": "annual safety inspection",
       "status": "inProcess",
       "date": "2025-03-20",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -76,6 +83,7 @@
       "description": "tire rotation",
       "status": "pending",
       "date": "2025-04-10",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -84,6 +92,7 @@
       "description": "coolant system check",
       "status": "pending",
       "date": "2025-05-01",
+      "difficulty": 3,
       "notes": "Check levels and hoses"
     },
     {
@@ -92,6 +101,7 @@
       "description": "blade sharpening",
       "status": "complete",
       "date": "2025-03-01",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -100,6 +110,7 @@
       "description": "oil change",
       "status": "complete",
       "date": "2025-03-15",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -108,6 +119,7 @@
       "description": "carburetor replacement",
       "status": "inProcess",
       "date": "2025-03-25",
+      "difficulty": 3,
       "notes": "Engine was surging.  I had to really work hard to fix this.  Dan said it would cost a million dollars.  I found the part on parts.com for only 50 bucks.  I was super amazed that dan did not know how to fix this."
     },
     {
@@ -116,6 +128,7 @@
       "description": "air filter replacement",
       "status": "pending",
       "date": "2025-04-05",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -124,6 +137,7 @@
       "description": "winterize equipment",
       "status": "pending",
       "date": "2025-04-20",
+      "difficulty": 3,
       "notes": "Fuel stabilizer and drain"
     },
     {
@@ -132,6 +146,7 @@
       "description": "initial inspection",
       "status": "complete",
       "date": "2025-02-01",
+      "difficulty": 3,
       "notes": "All components checked"
     },
     {
@@ -140,6 +155,7 @@
       "description": "blade inspection and sharpening",
       "status": "complete",
       "date": "2025-02-20",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -148,6 +164,7 @@
       "description": "drive belt inspection",
       "status": "inProcess",
       "date": "2025-03-10",
+      "difficulty": 3,
       "notes": "Slight wear observed"
     },
     {
@@ -156,6 +173,7 @@
       "description": "lubrication of moving parts",
       "status": "pending",
       "date": "2025-04-01",
+      "difficulty": 3,
       "notes": null
     },
     {
@@ -164,6 +182,7 @@
       "description": "fastener and bolt tightening",
       "status": "pending",
       "date": "2025-04-15",
+      "difficulty": 3,
       "notes": null
     }
   ]
