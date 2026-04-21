@@ -117,7 +117,7 @@ export default function AssetPanel({ selectedAsset }) {
             <label className={styles.field}>
               <span className={styles.label}>Notes</span>
               <textarea
-                className={styles.textArea}
+                className={styles.textarea}
                 name="notes"
                 value={formValues.notes}
                 onChange={handleChange}

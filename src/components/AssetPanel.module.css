@@ -1,4 +1,5 @@
-/* src/components/AssetPanel.module.css */.form {
+/* src/components/AssetPanel.module.css */
+.form {
   display: grid;
   gap: var(--space-sm);
 }
