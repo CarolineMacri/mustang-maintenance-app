@@ -5,6 +5,7 @@
     "description": "oil and filter change",
     "status": "complete",
     "date": "2025-01-10",
+    "difficulty": 1,
     "notes": "Full synthetic oil"
   },
   {
@@ -13,6 +14,7 @@
     "description": "front brake pad replacement",
     "status": "complete",
     "date": "2025-02-15",
+    "difficulty": 1,
     "notes": "Pads replaced, rotors good"
   },
   {
@@ -21,6 +23,7 @@
     "description": "annual safety inspection",
     "status": "inProcess",
     "date": "2025-03-20",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -29,6 +32,7 @@
     "description": "tire rotation",
     "status": "pending",
     "date": "2025-04-10",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -37,6 +41,7 @@
     "description": "coolant system check",
     "status": "pending",
     "date": "2025-05-01",
+    "difficulty": 1,
     "notes": "Check levels and hoses"
   },
 
@@ -46,6 +51,7 @@
     "description": "blade sharpening",
     "status": "complete",
     "date": "2025-03-01",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -54,6 +60,7 @@
     "description": "oil change",
     "status": "complete",
     "date": "2025-03-15",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -62,6 +69,7 @@
     "description": "carburetor replacement",
     "status": "inProcess",
     "date": "2025-03-25",
+    "difficulty": 1,
     "notes": "Engine was surging"
   },
   {
@@ -70,6 +78,7 @@
     "description": "air filter replacement",
     "status": "pending",
     "date": "2025-04-05",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -78,6 +87,7 @@
     "description": "winterize equipment",
     "status": "pending",
     "date": "2025-04-20",
+    "difficulty": 1,
     "notes": "Fuel stabilizer and drain"
   },
 
@@ -87,6 +97,7 @@
     "description": "initial inspection",
     "status": "complete",
     "date": "2025-02-01",
+    "difficulty": 1,
     "notes": "All components checked"
   },
   {
@@ -95,6 +106,7 @@
     "description": "blade inspection and sharpening",
     "status": "complete",
     "date": "2025-02-20",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -103,6 +115,7 @@
     "description": "drive belt inspection",
     "status": "inProcess",
     "date": "2025-03-10",
+    "difficulty": 1,
     "notes": "Slight wear observed"
   },
   {
@@ -111,6 +124,7 @@
     "description": "lubrication of moving parts",
     "status": "pending",
     "date": "2025-04-01",
+    "difficulty": 1,
     "notes": null
   },
   {
@@ -119,6 +133,7 @@
     "description": "fastener and bolt tightening",
     "status": "pending",
     "date": "2025-04-15",
+    "difficulty": 1,
     "notes": null
   }
 ]

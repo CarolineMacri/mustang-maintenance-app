@@ -6,8 +6,9 @@
     "model": "Mustang GT",
     "year": 2020,
     "vinSerialNo": "1FA6P8CF0L5100001",
-    "custom1": "Garage Kept",
-    "custom2": null,
+    "part1": "Garage Kept",
+    "part2": null,
+    "part3": "wr2-100",
     "notes": "Primary vehicle, weekend use"
   },
   {
@@ -17,8 +18,9 @@
     "model": "HRX217VKA",
     "year": null,
     "vinSerialNo": null,
-    "custom1": null,
-    "custom2": null,
+    "part1": "Fram 1100",
+    "part2": null,
+    "part3": null,
     "notes": "Used weekly during growing season"
   },
   {
@@ -28,8 +30,9 @@
     "model": "100137",
     "year": 2022,
     "vinSerialNo": null,
-    "custom1": "Electric Start",
-    "custom2": "Stored in Shed",
+    "part1": "Electric Start",
+    "part2": "Stored in Shed",
+    "part3": "Oil",
     "notes": null
   }
 ]
