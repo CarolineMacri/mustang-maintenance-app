@@ -4,6 +4,7 @@ import AppBrand from '../components/AppBrand';
 import AssetSelector from '../components/AssetSelector';
 import AssetPanel from '../components/AssetPanel';
 import MaintenancePanel from '../components/MaintenancePanel';
+import Button from '../components/Button';
 
 export default function AppLayout({
   assets,
@@ -17,6 +18,10 @@ export default function AppLayout({
       {/* HEADER */}
       <header className={`${styles.header} chrome`}>
         <AppBrand />
+        <Button role="primary">Primary</Button>
+        <Button role="secondary">Secondary</Button>
+        <Button role="destructive">Destructive</Button>
+        <Button role="utility" icon="❌" size="icon"></Button>
         <AssetSelector
           assets={assets}
           selectedAssetId={selectedAssetId}
