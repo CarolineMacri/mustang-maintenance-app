@@ -8,7 +8,7 @@
 .headerRow,
 .recordRow {
   display: grid;
-  grid-template-columns: 120px 120px 1fr auto;
+  grid-template-columns: 100px 100px 80px 1fr auto;
   align-items: center;
   column-gap: var(--space-md);
   padding: var(--space-sm) var(--space-md);

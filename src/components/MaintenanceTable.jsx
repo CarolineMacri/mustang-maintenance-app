@@ -18,6 +18,7 @@ export default function MaintenanceTable({ records }) {
       <div className={styles.headerRow} role="row">
         <div role="columnheader">Date</div>
         <div role="columnheader">Status</div>
+        <div role="columnheader">Difficulty</div>
         <div role="columnheader">Description</div>
         <div className={styles.arrowHeader} aria-hidden="true"></div>
       </div>
@@ -31,6 +32,7 @@ export default function MaintenanceTable({ records }) {
               <div className={styles.recordRow} role="row">
                 <div role="cell">{record.date}</div>
                 <div role="cell">{record.status}</div>
+                <div role="cell">{record.difficulty}</div>
                 <div role="cell">{record.description}</div>
                 <div role="cell" className={styles.arrowCell}>
                   <Button
