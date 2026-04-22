@@ -7,11 +7,30 @@ const emptyForm = {
   name: '',
   make: '',
   model: '',
+  year: '',
+  vinSerialNo: '',
   part1: '',
   part2: '',
   part3: '',
   notes: '',
 };
+
+function getFormValues(asset) {
+  if (!asset) {
+    return emptyForm;
+  }
+  return {
+    name: asset.name ?? '',
+    make: asset.make ?? '',
+    model: asset.model ?? '',
+    year: asset.year != null ? String(asset.year) : '',
+    vinSerialNo: asset.vinSerialNo ?? '',
+    part1: asset.part1 ?? '',
+    part2: asset.part2 ?? '',
+    part3: asset.part3 ?? '',
+    notes: asset.notes ?? '',
+  };
+}
 
 export default function AssetPanel({ selectedAsset }) {
   const [formValues, setFormValues] = useState(emptyForm);
@@ -22,15 +41,7 @@ export default function AssetPanel({ selectedAsset }) {
       return;
     }
 
-    setFormValues({
-      name: selectedAsset.name,
-      make: selectedAsset.make,
-      model: selectedAsset.model,
-      part1: selectedAsset.part1,
-      part2: selectedAsset.part2,
-      part3: selectedAsset.part3,
-      notes: selectedAsset.notes ?? '',
-    });
+    setFormValues(getFormValues(selectedAsset));
   }, [selectedAsset]);
 
   const isEmpty = !selectedAsset;
@@ -38,6 +49,25 @@ export default function AssetPanel({ selectedAsset }) {
   function handleChange(event) {
     const { name, value } = event.target;
     setFormValues((currentValues) => ({ ...currentValues, [name]: value }));
+  }
+
+  function handleCancel() {
+    setFormValues(getFormValues(selectedAsset));
+  }
+
+  function handleSave() {
+    if (!selectedAsset) {
+      return;
+    }
+
+    const updatedAsset = {
+      ...selectedAsset,
+      ...formValues,
+      year: formValues.year === '' ? null : Number(formValues.year),
+    };
+
+    alert(`UpdatedAsset: \n${JSON.stringify(updatedAsset, null, 2)} `);
+    onSave?.(updatedAsset);
   }
 
   return (
@@ -86,6 +116,26 @@ export default function AssetPanel({ selectedAsset }) {
               />
             </label>
             <label className={styles.field}>
+              <span className={styles.label}>Year</span>
+              <input
+                className={styles.input}
+                type="number"
+                name="year"
+                value={formValues.year}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
+              <span className={styles.label}>VIN / Serial Number</span>
+              <input
+                className={styles.input}
+                type="text"
+                name="vinSerialNo"
+                value={formValues.vinSerialNo}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={styles.field}>
               <span className={styles.label}>Part 1</span>
               <input
                 className={styles.input}
@@ -129,10 +179,10 @@ export default function AssetPanel({ selectedAsset }) {
       </PanelCard.Body>
 
       <PanelCard.Footer>
-        <Button role="secondary" disabled={isEmpty}>
+        <Button role="secondary" disabled={isEmpty} onClick={handleCancel}>
           Cancel
         </Button>
-        <Button role="primary" disabled={isEmpty}>
+        <Button role="primary" disabled={isEmpty} onClick={handleSave}>
           Save
         </Button>
       </PanelCard.Footer>
