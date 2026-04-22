@@ -58,8 +58,15 @@ function App() {
       ? []
       : maintenance.filter((record) => record.assetId === selectedAssetId);
 
-  console.log(selectedMaintenanceRecords);
-
+  function handleSaveAsset(updatedAsset) {
+    setAssets((currentAssets) =>
+      currentAssets.map((asset) =>
+        asset.id === updatedAsset.id ? updatedAsset : asset,
+      ),
+    );
+    setSelectedAssetId(updatedAsset.id);
+    alert('in handle Save Asset');
+  }
   return (
     <AppLayout
       assets={assets}
@@ -67,6 +74,7 @@ function App() {
       selectedAssetId={selectedAsset ? selectedAssetId : ''}
       selectedMaintenanceRecords={selectedMaintenanceRecords}
       onSelectAsset={setSelectedAssetId}
+      onSaveAsset={handleSaveAsset}
     />
   );
 }

@@ -12,6 +12,7 @@ export default function AppLayout({
   selectedAssetId,
   selectedMaintenanceRecords,
   onSelectAsset,
+  onSaveAsset,
 }) {
   return (
     <div className={styles.app}>
@@ -33,7 +34,7 @@ export default function AppLayout({
       <main className={styles.main}>
         {/* LEFT PANEL (1/3) */}
         <section className={`${styles.leftPanel} chrome`}>
-          <AssetPanel selectedAsset={selectedAsset} />
+          <AssetPanel selectedAsset={selectedAsset} onSave={onSaveAsset} />
         </section>
 
         {/* RIGHT PANEL (2/3) */}

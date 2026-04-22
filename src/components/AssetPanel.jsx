@@ -32,7 +32,7 @@ function getFormValues(asset) {
   };
 }
 
-export default function AssetPanel({ selectedAsset }) {
+export default function AssetPanel({ selectedAsset, onSave }) {
   const [formValues, setFormValues] = useState(emptyForm);
 
   useEffect(() => {
