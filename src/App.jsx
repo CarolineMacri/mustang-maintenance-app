@@ -58,14 +58,37 @@ function App() {
       ? []
       : maintenance.filter((record) => record.assetId === selectedAssetId);
 
-  function handleSaveAsset(updatedAsset) {
-    setAssets((currentAssets) =>
-      currentAssets.map((asset) =>
-        asset.id === updatedAsset.id ? updatedAsset : asset,
-      ),
-    );
-    setSelectedAssetId(updatedAsset.id);
-    alert('in handle Save Asset');
+  async function handleSaveAsset(updatedAsset) {
+    try {
+      const res = await fetch(
+        `http://localhost:3001/assets/${updatedAsset.id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedAsset),
+        },
+      );
+      if (!res.ok) {
+        throw new Error('Save Failed');
+      }
+
+      const savedAssetData = await res.json();
+
+      const savedAsset = {
+        ...savedAssetData,
+        id: Number(savedAssetData.id),
+      };
+
+      setAssets((currentAssets) =>
+        currentAssets.map((asset) =>
+          asset.id === savedAsset.id ? savedAsset : asset,
+        ),
+      );
+    } catch (error) {
+      alert('could not save asset');
+    }
   }
   return (
     <AppLayout
