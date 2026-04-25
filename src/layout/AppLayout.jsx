@@ -11,6 +11,8 @@ export default function AppLayout({
   selectedAsset,
   selectedAssetId,
   selectedMaintenanceRecords,
+  isCreatingAsset,
+  onAddAsset,
   onSelectAsset,
   onSaveAsset,
   onSaveMaintenance,
@@ -29,7 +31,7 @@ export default function AppLayout({
             selectedAssetId={selectedAssetId}
             onSelectAsset={onSelectAsset}
           />
-          <Button role="primary" icon="➕">
+          <Button role="primary" icon="➕" onClick={onAddAsset}>
             Add Asset
           </Button>
         </div>
@@ -39,7 +41,11 @@ export default function AppLayout({
       <main className={styles.main}>
         {/* LEFT PANEL (1/3) */}
         <section className={`${styles.leftPanel} chrome`}>
-          <AssetPanel selectedAsset={selectedAsset} onSave={onSaveAsset} />
+          <AssetPanel
+            selectedAsset={selectedAsset}
+            isCreating={isCreatingAsset}
+            onSave={onSaveAsset}
+          />
         </section>
 
         {/* RIGHT PANEL (2/3) */}

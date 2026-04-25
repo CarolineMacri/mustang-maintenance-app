@@ -32,10 +32,14 @@ function getFormValues(asset) {
   };
 }
 
-export default function AssetPanel({ selectedAsset, onSave }) {
+export default function AssetPanel({ selectedAsset, isCreating, onSave }) {
   const [formValues, setFormValues] = useState(emptyForm);
 
   useEffect(() => {
+    if (isCreating) {
+      setFormValues(emptyForm);
+      return;
+    }
     if (!selectedAsset) {
       setFormValues(emptyForm);
       return;
@@ -44,7 +48,7 @@ export default function AssetPanel({ selectedAsset, onSave }) {
     setFormValues(getFormValues(selectedAsset));
   }, [selectedAsset]);
 
-  const isEmpty = !selectedAsset;
+  const isEmpty = !selectedAsset && !isCreating;
 
   function handleChange(event) {
     const { name, value } = event.target;
@@ -56,18 +60,20 @@ export default function AssetPanel({ selectedAsset, onSave }) {
   }
 
   function handleSave() {
-    if (!selectedAsset) {
+    if (!selectedAsset && !isCreating) {
       return;
     }
 
-    const updatedAsset = {
-      ...selectedAsset,
+    const assetToSave = {
+      ...(selectedAsset ?? {}),
       ...formValues,
       year: formValues.year === '' ? null : Number(formValues.year),
     };
 
-    alert(`UpdatedAsset: \n${JSON.stringify(updatedAsset, null, 2)} `);
-    onSave?.(updatedAsset);
+    alert(
+      `${isCreating ? 'New' : 'updated'}Asset: \n${JSON.stringify(assetToSave, null, 2)} `,
+    );
+    onSave?.(assetToSave);
   }
 
   return (

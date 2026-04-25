@@ -23,7 +23,7 @@ export default function AssetSelector({
           id="asset-selector"
           className={styles.control}
           value={hasAssets ? selectedAssetId : ''}
-          onChange={(event) => onSelectAsset(Number(event.target.value))}
+          onChange={(event) => onSelectAsset(event.target.value)}
           disabled={!hasAssets}
         >
           {hasAssets ? (

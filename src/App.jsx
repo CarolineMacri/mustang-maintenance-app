@@ -11,6 +11,7 @@ function App() {
   const [assets, setAssets] = useState([]);
   const [maintenance, setMaintenance] = useState([]);
   const [selectedAssetId, setSelectedAssetId] = useState(null);
+  const [isCreatingAsset, setIsCreatingAsset] = useState(false);
 
   useEffect(() => {
     async function loadData() {
@@ -23,20 +24,9 @@ function App() {
         const assetsData = await assetsResponse.json();
         const maintenanceData = await maintenanceResponse.json();
 
-        const normalizedAssets = assetsData.map((asset) => ({
-          ...asset,
-          id: Number(asset.id),
-        }));
-
-        const normalizedMaintenance = maintenanceData.map((record) => ({
-          ...record,
-          id: Number(record.id),
-          assetId: Number(record.assetId),
-        }));
-
-        setAssets(normalizedAssets);
-        setMaintenance(normalizedMaintenance);
-        setSelectedAssetId(normalizedAssets[0]?.id ?? null);
+        setAssets(assetsData);
+        setMaintenance(maintenanceData);
+        setSelectedAssetId(assetsData[0]?.id ?? null);
       } catch (error) {
         alert('could not load asset and maintenance data');
         setAssets([]);
@@ -47,25 +37,36 @@ function App() {
     loadData();
   }, []);
 
-  const selectedAsset = assets.find(
-    (asset) => asset.id === selectedAssetId ?? null,
-  );
+  const selectedAsset =
+    assets.find((asset) => String(asset.id) === String(selectedAssetId)) ??
+    null;
 
   const selectedMaintenanceRecords =
     selectedAssetId === null
       ? []
-      : maintenance.filter((record) => record.assetId === selectedAssetId);
+      : maintenance.filter(
+          (record) => String(record.assetId) === String(selectedAssetId),
+        );
 
-  async function handleSaveAsset(updatedAsset) {
+  function handleAddAsset() {
+    setSelectedAssetId(null);
+    setIsCreatingAsset(true);
+  }
+
+  async function handleSaveAsset(assetToSave) {
     try {
+      const isNewAsset = assetToSave.id == null;
+
       const res = await fetch(
-        `http://localhost:3001/assets/${updatedAsset.id}`,
+        isNewAsset
+          ? 'http://localhost:3001/assets'
+          : `http://localhost:3001/assets/${assetToSave.id}`,
         {
-          method: 'PATCH',
+          method: isNewAsset ? 'POST' : 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(updatedAsset),
+          body: JSON.stringify(assetToSave),
         },
       );
       if (!res.ok) {
@@ -76,14 +77,18 @@ function App() {
 
       const savedAsset = {
         ...savedAssetData,
-        id: Number(savedAssetData.id),
       };
 
       setAssets((currentAssets) =>
-        currentAssets.map((asset) =>
-          asset.id === savedAsset.id ? savedAsset : asset,
-        ),
+        isNewAsset
+          ? [...currentAssets, savedAsset]
+          : currentAssets.map((asset) =>
+              asset.id === savedAsset.id ? savedAsset : asset,
+            ),
       );
+
+      setSelectedAssetId(savedAsset.id);
+      setIsCreatingAsset(false);
     } catch (error) {
       alert('could not save asset');
     }
@@ -109,8 +114,6 @@ function App() {
 
       const savedRecord = {
         ...savedRecordData,
-        id: Number(savedRecordData.id),
-        assetId: Number(savedRecordData.assetId),
       };
 
       setMaintenance((currentMaintenance) =>
@@ -129,6 +132,8 @@ function App() {
       selectedAsset={selectedAsset}
       selectedAssetId={selectedAsset ? selectedAssetId : ''}
       selectedMaintenanceRecords={selectedMaintenanceRecords}
+      isCreatingAsset={isCreatingAsset}
+      onAddAsset={handleAddAsset}
       onSelectAsset={setSelectedAssetId}
       onSaveAsset={handleSaveAsset}
       onSaveMaintenance={handleSaveMaintenance}
