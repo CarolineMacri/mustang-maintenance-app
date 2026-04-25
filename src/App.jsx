@@ -94,6 +94,40 @@ function App() {
     }
   }
 
+  async function handleDeleteAsset(assetId) {
+    const hasMaintenanceRecords = maintenance.some(
+      (record) => String(record.assetId) === String(assetId),
+    );
+
+    if (hasMaintenanceRecords) {
+      alert('Cannot delete and Asset that has maintenance records');
+      return;
+    }
+
+    const shouldDelete = window.confirm('Delete this asset?');
+
+    if (!shouldDelete) return;
+
+    try {
+      const res = await fetch(`http://localhost:3001/assets/${assetId}`, {
+        method: 'DELETE',
+      });
+      if (!res.ok) {
+        throw new Error('Delete failed');
+      }
+
+      const nextAssets = assets.filter(
+        (asset) => String(asset.id) !== String(assetId),
+      );
+
+      setAssets(nextAssets);
+      setSelectedAssetId(nextAssets[0]?.id ?? null);
+      setIsCreatingAsset(false);
+    } catch {
+      alert('Could not delete asset');
+    }
+  }
+
   async function handleSaveMaintenance(recordToSave) {
     try {
       const isNewRecord = recordToSave.id == null;
@@ -162,6 +196,7 @@ function App() {
       onAddAsset={handleAddAsset}
       onSelectAsset={setSelectedAssetId}
       onSaveAsset={handleSaveAsset}
+      onDeleteAsset={handleDeleteAsset}
       onSaveMaintenance={handleSaveMaintenance}
       onDeleteMaintenance={handleDeleteMaintenance}
     />
