@@ -4,10 +4,7 @@ import { useState } from 'react';
 import styles from './MaintenanceTable.module.css';
 import Button from './Button';
 
-export default function MaintenanceTable({
-  records,
-  onEdit = (record) => alert('edit ' + record.description),
-}) {
+export default function MaintenanceTable({ records, onEdit }) {
   const [expandedRecordId, setExpandedRecordId] = useState(null);
 
   function handleToggle(recordId) {
