@@ -16,6 +16,7 @@ export default function AppLayout({
   onSelectAsset,
   onSaveAsset,
   onSaveMaintenance,
+  onDeleteMaintenance,
 }) {
   return (
     <div className={styles.app}>
@@ -54,6 +55,7 @@ export default function AppLayout({
             records={selectedMaintenanceRecords}
             selectedAssetId={selectedAssetId}
             onSaveMaintenance={onSaveMaintenance}
+            onDeleteMaintenance={onDeleteMaintenance}
           />
         </section>
       </main>
