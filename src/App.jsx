@@ -1,8 +1,6 @@
 // src/App.jsx////
 
 import { useState, useEffect } from 'react';
-import initialMaintenance from './data/maintenance.json';
-import initialAssets from './data/assets.json';
 
 import AppLayout from './layout/AppLayout';
 
@@ -11,7 +9,6 @@ import './styles/utilities.css';
 
 function App() {
   const [assets, setAssets] = useState([]);
-  // const [assets, setAssets] = useState([]);
   const [maintenance, setMaintenance] = useState([]);
   const [selectedAssetId, setSelectedAssetId] = useState(null);
 
@@ -39,7 +36,7 @@ function App() {
 
         setAssets(normalizedAssets);
         setMaintenance(normalizedMaintenance);
-        setSelectedAssetId(Number(normalizedAssets[0]?.id) ?? null);
+        setSelectedAssetId(normalizedAssets[0]?.id ?? null);
       } catch (error) {
         alert('could not load asset and maintenance data');
         setAssets([]);
@@ -53,6 +50,7 @@ function App() {
   const selectedAsset = assets.find(
     (asset) => asset.id === selectedAssetId ?? null,
   );
+
   const selectedMaintenanceRecords =
     selectedAssetId === null
       ? []
