@@ -47,6 +47,30 @@
       "part2": "Stored in Shed",
       "part3": null,
       "notes": null
+    },
+    {
+      "name": "Car",
+      "make": "AMC",
+      "model": "Gremlin",
+      "year": 1876,
+      "vinSerialNo": "123fsdfeweyr12232904",
+      "part1": "Master Cylinder",
+      "part2": "Carburator",
+      "part3": "Cool Gremlin Decal",
+      "notes": "this was a great car until some dudes smashed into it at connector a",
+      "id": "i_o638koAg8"
+    },
+    {
+      "name": "Lawnmower",
+      "make": "Gravely",
+      "model": "Ride Behind",
+      "year": 1997,
+      "vinSerialNo": "asd123",
+      "part1": "rear wheel",
+      "part2": "blade 123",
+      "part3": "",
+      "notes": "paul gave this to us",
+      "id": "Bilyc3E-oKg"
     }
   ],
   "maintenance": [
@@ -71,11 +95,11 @@
     {
       "id": "3",
       "assetId": 1,
-      "description": "annual safety inspection",
+      "description": "annual safety inspection for s asdfjk;",
       "status": "inProcess",
       "date": "2025-03-20",
       "difficulty": 3,
-      "notes": null
+      "notes": ""
     },
     {
       "id": "4",
@@ -102,7 +126,7 @@
       "status": "complete",
       "date": "2025-03-01",
       "difficulty": 3,
-      "notes": null
+      "notes": "dsfasdf"
     },
     {
       "id": "7",
