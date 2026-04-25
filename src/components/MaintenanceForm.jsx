@@ -8,6 +8,7 @@ function getFormValues(record) {
   return {
     date: record.date ?? '',
     status: record.status ?? '',
+    difficulty: record.difficulty ?? '',
     description: record.description ?? '',
     notes: record.notes ?? '',
   };
@@ -29,7 +30,7 @@ function MaintenanceForm({ record, onCancel, onSave }) {
   }
 
   function handleSubmit(event) {
-    event.preventDefault;
+    event.preventDefault();
     onSave({
       ...record,
       ...formValues,
@@ -39,7 +40,11 @@ function MaintenanceForm({ record, onCancel, onSave }) {
   return (
     <div className={styles.backdrop}>
       <form className={`${styles.modal} chrome`} onSubmit={handleSubmit}>
-        <h3>Edit Maintenance Record</h3>
+        <h3>
+          {record.id == null
+            ? 'Add Maintenance Record'
+            : 'Edit Maintenance Record'}
+        </h3>
         <label className={styles.field}>
           <span>Date</span>
           <input
@@ -58,6 +63,16 @@ function MaintenanceForm({ record, onCancel, onSave }) {
             type="text"
             name="status"
             value={formValues.status}
+            onChange={handleChange}
+          />
+        </label>
+        <label className={styles.field}>
+          <span>Difficulty</span>
+          <input
+            className={styles.input}
+            type="text"
+            name="difficulty"
+            value={formValues.difficulty}
             onChange={handleChange}
           />
         </label>

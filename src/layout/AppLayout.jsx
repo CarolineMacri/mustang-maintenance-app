@@ -52,15 +52,9 @@ export default function AppLayout({
         <section className={`${styles.rightPanel} chrome`}>
           <MaintenancePanel
             records={selectedMaintenanceRecords}
+            selectedAssetId={selectedAssetId}
             onSaveMaintenance={onSaveMaintenance}
           />
-
-          {/* MODAL PLACEHOLDER */}
-          {/* <div className={styles.modalBackdrop}>
-            <div className={`${styles.modal} chrome`}>
-              <p>Modal (add/edit record)</p>
-            </div>
-          </div> */}
         </section>
       </main>
     </div>

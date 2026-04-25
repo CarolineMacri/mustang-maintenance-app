@@ -94,32 +94,34 @@ function App() {
     }
   }
 
-  async function handleSaveMaintenance(updatedRecord) {
+  async function handleSaveMaintenance(recordToSave) {
     try {
+      const isNewRecord = recordToSave.id == null;
+
       const res = await fetch(
-        `http://localhost:3001/maintenance/${updatedRecord.id}`,
+        isNewRecord
+          ? `http://localhost:3001/maintenance`
+          : `http://localhost:3001/maintenance/${recordToSave.id}`,
         {
-          method: 'PATCH',
+          method: isNewRecord ? 'POST' : 'PATCH',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify(updatedRecord),
+          body: JSON.stringify(recordToSave),
         },
       );
       if (!res.ok) {
         throw new Error('Save Failed');
       }
 
-      const savedRecordData = await res.json();
-
-      const savedRecord = {
-        ...savedRecordData,
-      };
+      const savedRecord = await res.json();
 
       setMaintenance((currentMaintenance) =>
-        currentMaintenance.map((record) =>
-          record.id === savedRecord.id ? savedRecord : record,
-        ),
+        isNewRecord
+          ? [...currentMaintenance, savedRecord]
+          : currentMaintenance.map((record) =>
+              record.id === savedRecord.id ? savedRecord : record,
+            ),
       );
     } catch (error) {
       alert('could not save maintenance record');
