@@ -8,7 +8,7 @@
 .headerRow,
 .recordRow {
   display: grid;
-  grid-template-columns: 100px 100px 80px 1fr auto;
+  grid-template-columns: 100px 100px 80px 1fr auto auto;
   align-items: center;
   column-gap: var(--space-md);
   padding: var(--space-sm) var(--space-md);
@@ -41,7 +41,9 @@
 }
 
 .arrowHeader,
-.arrowCell {
+.arrowCell,
+.editHeader,
+.editCell {
   display: flex;
   justify-content: center;
   align-items: center;

@@ -4,7 +4,10 @@ import { useState } from 'react';
 import styles from './MaintenanceTable.module.css';
 import Button from './Button';
 
-export default function MaintenanceTable({ records }) {
+export default function MaintenanceTable({
+  records,
+  onEdit = (record) => alert('edit ' + record.description),
+}) {
   const [expandedRecordId, setExpandedRecordId] = useState(null);
 
   function handleToggle(recordId) {
@@ -21,6 +24,7 @@ export default function MaintenanceTable({ records }) {
         <div role="columnheader">Difficulty</div>
         <div role="columnheader">Description</div>
         <div className={styles.arrowHeader} aria-hidden="true"></div>
+        <div className={styles.editHeader} aria-hidden="true"></div>
       </div>
       <div className={styles.body}>
         {records.map((record) => {
@@ -40,6 +44,15 @@ export default function MaintenanceTable({ records }) {
                     size="icon"
                     icon={isExpanded ? '▲' : '▼'}
                     onClick={() => handleToggle(record.id)}
+                  ></Button>
+                </div>
+                <div role="cell" className={styles.editCell}>
+                  <Button
+                    role="utility"
+                    size="icon"
+                    icon="✎"
+                    iconOnly
+                    onClick={() => onEdit(record)}
                   ></Button>
                 </div>
               </div>
