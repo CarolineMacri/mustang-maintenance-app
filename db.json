@@ -81,7 +81,7 @@
       "status": "pending",
       "date": "2025-01-10",
       "difficulty": 1,
-      "notes": "Full synthetic oil xxxxxx"
+      "notes": "Full synthetic oil cheapest at Costco"
     },
     {
       "id": "2",
@@ -208,6 +208,24 @@
       "date": "2025-04-15",
       "difficulty": 3,
       "notes": null
+    },
+    {
+      "id": "SISjQLo5wOs",
+      "assetId": "Bilyc3E-oKg",
+      "date": "2026-06-24",
+      "status": "pending",
+      "difficulty": "3",
+      "description": "clean the grass out of the blades",
+      "notes": "a file works well"
+    },
+    {
+      "id": "pmctN4eV8mI",
+      "assetId": "1",
+      "date": "2026-04-25",
+      "status": "pending",
+      "difficulty": "10 ",
+      "description": "Add four on the floor",
+      "notes": "Dan could do this in a minute"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
