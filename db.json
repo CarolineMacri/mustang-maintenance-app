@@ -53,11 +53,11 @@
     {
       "id": "1",
       "assetId": 1,
-      "description": "oil and filter change",
-      "status": "complete",
+      "description": "oil and filter change xxxx",
+      "status": "pending",
       "date": "2025-01-10",
       "difficulty": 1,
-      "notes": "Full synthetic oil"
+      "notes": "Full synthetic oil xxxxxx"
     },
     {
       "id": "2",
