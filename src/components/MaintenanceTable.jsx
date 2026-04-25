@@ -4,7 +4,7 @@ import { useState } from 'react';
 import styles from './MaintenanceTable.module.css';
 import Button from './Button';
 
-export default function MaintenanceTable({ records, onEdit }) {
+export default function MaintenanceTable({ records, onEdit, onDelete }) {
   const [expandedRecordId, setExpandedRecordId] = useState(null);
 
   function handleToggle(recordId) {
@@ -22,6 +22,7 @@ export default function MaintenanceTable({ records, onEdit }) {
         <div role="columnheader">Description</div>
         <div className={styles.arrowHeader} aria-hidden="true"></div>
         <div className={styles.editHeader} aria-hidden="true"></div>
+        <div className={styles.deleteHeader} aria-hidden="true"></div>
       </div>
       <div className={styles.body}>
         {records.map((record) => {
@@ -50,6 +51,14 @@ export default function MaintenanceTable({ records, onEdit }) {
                     icon="✎"
                     iconOnly
                     onClick={() => onEdit(record)}
+                  ></Button>
+                </div>
+                <div role="cell" className={styles.deleteCell}>
+                  <Button
+                    role="destructive"
+                    size="icon"
+                    icon="🗑"
+                    onClick={() => onDelete(record.id)}
                   ></Button>
                 </div>
               </div>
