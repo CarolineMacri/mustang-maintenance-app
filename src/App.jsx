@@ -128,6 +128,30 @@ function App() {
     }
   }
 
+  async function handleDeleteMaintenance(recordId) {
+    const shouldDelete = window.confirm('Delete this maintence record');
+
+    if (!shouldDelete) {
+      return;
+    }
+
+    try {
+      const res = await fetch(`http://localhost:3001/maintenance/${recordId}`, {
+        method: 'DELETE',
+      });
+
+      if (!res.ok) {
+        throw new Error('Delete Failed');
+      }
+
+      setMaintenance((currentMaintenance) =>
+        currentMaintenance.filter((record) => record.id !== recordId),
+      );
+    } catch {
+      alert('Could not delete maintenance record');
+    }
+  }
+
   return (
     <AppLayout
       assets={assets}
@@ -139,6 +163,7 @@ function App() {
       onSelectAsset={setSelectedAssetId}
       onSaveAsset={handleSaveAsset}
       onSaveMaintenance={handleSaveMaintenance}
+      onDeleteMaintenance={handleDeleteMaintenance}
     />
   );
 }
