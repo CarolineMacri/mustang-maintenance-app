@@ -138,15 +138,6 @@
       "notes": null
     },
     {
-      "id": "8",
-      "assetId": 2,
-      "description": "carburetor replacement",
-      "status": "inProcess",
-      "date": "2025-03-25",
-      "difficulty": 3,
-      "notes": "Engine was surging.  I had to really work hard to fix this.  Dan said it would cost a million dollars.  I found the part on parts.com for only 50 bucks.  I was super amazed that dan did not know how to fix this."
-    },
-    {
       "id": "9",
       "assetId": 2,
       "description": "air filter replacement",
