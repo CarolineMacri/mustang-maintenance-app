@@ -88,6 +88,41 @@ function App() {
       alert('could not save asset');
     }
   }
+
+  async function handleSaveMaintenance(updatedRecord) {
+    try {
+      const res = await fetch(
+        `http://localhost:3001/maintenance/${updatedRecord.id}`,
+        {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedRecord),
+        },
+      );
+      if (!res.ok) {
+        throw new Error('Save Failed');
+      }
+
+      const savedRecordData = await res.json();
+
+      const savedRecord = {
+        ...savedRecordData,
+        id: Number(savedRecordData.id),
+        assetId: Number(savedRecordData.assetId),
+      };
+
+      setMaintenance((currentMaintenance) =>
+        currentMaintenance.map((record) =>
+          record.id === savedRecord.id ? savedRecord : record,
+        ),
+      );
+    } catch (error) {
+      alert('could not save maintenance record');
+    }
+  }
+
   return (
     <AppLayout
       assets={assets}
