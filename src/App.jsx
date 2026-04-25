@@ -131,6 +131,7 @@ function App() {
       selectedMaintenanceRecords={selectedMaintenanceRecords}
       onSelectAsset={setSelectedAssetId}
       onSaveAsset={handleSaveAsset}
+      onSaveMaintenance={handleSaveMaintenance}
     />
   );
 }

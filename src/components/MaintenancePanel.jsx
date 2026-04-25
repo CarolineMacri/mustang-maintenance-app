@@ -5,7 +5,10 @@ import PanelCard from './PanelCard';
 import MaintenanceTable from './MaintenanceTable';
 import MaintenanceForm from './MaintenanceForm';
 
-export default function MaintenancePanel({ records = [] }) {
+export default function MaintenancePanel({
+  records = [],
+  onSaveMaintenance = { onSaveMaintenance },
+}) {
   const [selectedRecord, setSelectedRecord] = useState(null);
 
   function handleEdit(record) {
@@ -38,7 +41,7 @@ export default function MaintenancePanel({ records = [] }) {
           <MaintenanceForm
             record={selectedRecord}
             onCancel={handleCancel}
-            onSave={handleSave}
+            onSave={onSaveMaintenance}
           />
         ) : null}
       </PanelCard.Body>

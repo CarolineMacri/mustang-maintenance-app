@@ -13,6 +13,7 @@ export default function AppLayout({
   selectedMaintenanceRecords,
   onSelectAsset,
   onSaveAsset,
+  onSaveMaintenance,
 }) {
   return (
     <div className={styles.app}>
@@ -22,12 +23,16 @@ export default function AppLayout({
         <Button role="primary">Primary</Button>
         <Button role="secondary">Secondary</Button>
         <Button role="destructive">Destructive</Button>
-        <Button role="utility" icon="❌" size="icon"></Button>
-        <AssetSelector
-          assets={assets}
-          selectedAssetId={selectedAssetId}
-          onSelectAsset={onSelectAsset}
-        />
+        <div className={styles.headerRight}>
+          <AssetSelector
+            assets={assets}
+            selectedAssetId={selectedAssetId}
+            onSelectAsset={onSelectAsset}
+          />
+          <Button role="primary" icon="➕">
+            Add Asset
+          </Button>
+        </div>
       </header>
 
       {/* MAIN CONTENT */}
@@ -39,7 +44,10 @@ export default function AppLayout({
 
         {/* RIGHT PANEL (2/3) */}
         <section className={`${styles.rightPanel} chrome`}>
-          <MaintenancePanel records={selectedMaintenanceRecords} />
+          <MaintenancePanel
+            records={selectedMaintenanceRecords}
+            onSaveMaintenance={onSaveMaintenance}
+          />
 
           {/* MODAL PLACEHOLDER */}
           {/* <div className={styles.modalBackdrop}>

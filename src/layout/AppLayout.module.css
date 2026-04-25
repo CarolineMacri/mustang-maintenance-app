@@ -1,5 +1,4 @@
-.app {
-  display: flex;
+.app {  display: flex;
   flex-direction: column;
   height: 100vh;
   padding: var(--space-md);
@@ -14,6 +13,12 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--space-md);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
 }
 
 /* MAIN LAYOUT */
