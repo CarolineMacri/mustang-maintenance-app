@@ -32,7 +32,12 @@ function getFormValues(asset) {
   };
 }
 
-export default function AssetPanel({ selectedAsset, isCreating, onSave }) {
+export default function AssetPanel({
+  selectedAsset,
+  isCreating,
+  onSave,
+  onDelete,
+}) {
   const [formValues, setFormValues] = useState(emptyForm);
 
   useEffect(() => {
@@ -74,6 +79,13 @@ export default function AssetPanel({ selectedAsset, isCreating, onSave }) {
       `${isCreating ? 'New' : 'updated'}Asset: \n${JSON.stringify(assetToSave, null, 2)} `,
     );
     onSave?.(assetToSave);
+  }
+
+  function handleDelete() {
+    if (!selectedAsset && !isCreating) {
+      return;
+    }
+    onDelete?.(selectedAsset.id);
   }
 
   return (
@@ -185,6 +197,13 @@ export default function AssetPanel({ selectedAsset, isCreating, onSave }) {
       </PanelCard.Body>
 
       <PanelCard.Footer>
+        <Button
+          role="destructive"
+          disabled={isEmpty || isCreating}
+          onClick={handleDelete}
+        >
+          Delete
+        </Button>
         <Button role="secondary" disabled={isEmpty} onClick={handleCancel}>
           Cancel
         </Button>
