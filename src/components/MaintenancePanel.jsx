@@ -10,6 +10,7 @@ export default function MaintenancePanel({
   records = [],
   selectedAssetId,
   onSaveMaintenance,
+  onDeleteMaintenance,
 }) {
   const [selectedRecord, setSelectedRecord] = useState(null);
 
@@ -47,7 +48,11 @@ export default function MaintenancePanel({
 
       <PanelCard.Body>
         {records.length > 0 ? (
-          <MaintenanceTable records={records} onEdit={handleEdit} />
+          <MaintenanceTable
+            records={records}
+            onEdit={handleEdit}
+            onDelete={onDeleteMaintenance}
+          />
         ) : (
           <p>No maintenance records for this asset.</p>
         )}
