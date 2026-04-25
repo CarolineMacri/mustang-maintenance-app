@@ -83,4 +83,12 @@
   --color-button-utility-bg: #cfdbe4;
   --color-button-utility-hover-bg: #becdd8;
   --color-button-utility-text: var(--color-text-dark);
+
+  /* REPORT */
+  --color-report-page-bg: #ffffff;
+  --color-report-text: #111111;
+  --color-report-border: #777777;
+  --color-report-header-bg: #d9d9d9;
+  --color-report-footer-bg: #d9d9d9;
+  --color-report-panel-bg: #ffffff;
 }
