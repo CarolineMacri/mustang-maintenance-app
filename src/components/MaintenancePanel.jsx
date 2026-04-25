@@ -61,7 +61,7 @@ export default function MaintenancePanel({
           <MaintenanceForm
             record={selectedRecord}
             onCancel={handleCancel}
-            onSave={onSaveMaintenance}
+            onSave={handleSave}
           />
         ) : null}
       </PanelCard.Body>
