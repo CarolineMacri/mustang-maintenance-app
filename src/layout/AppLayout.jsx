@@ -15,6 +15,7 @@ export default function AppLayout({
   onAddAsset,
   onSelectAsset,
   onSaveAsset,
+  onDeleteAsset,
   onSaveMaintenance,
   onDeleteMaintenance,
 }) {
@@ -46,6 +47,7 @@ export default function AppLayout({
             selectedAsset={selectedAsset}
             isCreating={isCreatingAsset}
             onSave={onSaveAsset}
+            onDelete={onDeleteAsset}
           />
         </section>
 
