@@ -47,6 +47,18 @@
       "part2": "Stored in Shed",
       "part3": null,
       "notes": null
+    },
+    {
+      "name": "Car",
+      "make": "AMC",
+      "model": "Gremlin",
+      "year": 1987,
+      "vinSerialNo": "",
+      "part1": "",
+      "part2": "",
+      "part3": "",
+      "notes": "",
+      "id": "TVGfD4z0fZw"
     }
   ],
   "maintenance": [
@@ -184,6 +196,15 @@
       "difficulty": "10 ",
       "description": "Add four on the floor",
       "notes": "Dan could do this in a minute"
+    },
+    {
+      "id": "89VfTWeESzs",
+      "assetId": "TVGfD4z0fZw",
+      "date": "2026-04-25",
+      "status": "pending",
+      "difficulty": "3",
+      "description": "change oil",
+      "notes": ""
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"
