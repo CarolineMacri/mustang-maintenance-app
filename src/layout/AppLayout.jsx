@@ -18,15 +18,18 @@ export default function AppLayout({
   onDeleteAsset,
   onSaveMaintenance,
   onDeleteMaintenance,
+  onOpenAssetReport,
 }) {
   return (
     <div className={styles.app}>
       {/* HEADER */}
       <header className={`${styles.header} chrome`}>
         <AppBrand />
-        <Button role="primary">Primary</Button>
-        <Button role="secondary">Secondary</Button>
-        <Button role="destructive">Destructive</Button>
+
+        <Button role="secondary" onClick={onOpenAssetReport}>
+          Asset Report
+        </Button>
+
         <div className={styles.headerRight}>
           <AssetSelector
             assets={assets}
