@@ -61,12 +61,19 @@
       "id": "TVGfD4z0fZw"
     }
   ],
+  "maintenanceStatuses": [
+    { "id": "89VfTWeESzs", "name": "pending" },
+    { "id": "bQ2mLx9AaKp", "name": "complete" },
+    { "id": "pR7nXc4TzLm", "name": "lent" },
+    { "id": "uH5sKd8QwNe", "name": "returned" }
+  ],
   "maintenance": [
     {
       "id": "1",
       "assetId": 1,
       "description": "oil and filter change xxxx",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-01-10",
       "difficulty": 1,
       "notes": "Full synthetic oil cheapest at Costco"
@@ -76,6 +83,7 @@
       "assetId": 1,
       "description": "front brake pad replacement",
       "status": "complete",
+      "statusId": "bQ2mLx9AaKp",
       "date": "2025-02-15",
       "difficulty": 3,
       "notes": "Pads replaced, rotors good"
@@ -84,7 +92,8 @@
       "id": "3",
       "assetId": 1,
       "description": "annual safety inspection for s asdfjk;",
-      "status": "inProcess",
+      "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-03-20",
       "difficulty": 3,
       "notes": ""
@@ -94,6 +103,7 @@
       "assetId": 1,
       "description": "tire rotation",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-04-10",
       "difficulty": 3,
       "notes": null
@@ -103,6 +113,7 @@
       "assetId": 1,
       "description": "coolant system check",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-05-01",
       "difficulty": 3,
       "notes": "Check levels and hoses"
@@ -112,6 +123,7 @@
       "assetId": 2,
       "description": "blade sharpening",
       "status": "complete",
+      "statusId": "bQ2mLx9AaKp",
       "date": "2025-03-01",
       "difficulty": 3,
       "notes": "dsfasdf"
@@ -121,6 +133,7 @@
       "assetId": 2,
       "description": "oil change",
       "status": "complete",
+      "statusId": "bQ2mLx9AaKp",
       "date": "2025-03-15",
       "difficulty": 3,
       "notes": null
@@ -130,6 +143,7 @@
       "assetId": 2,
       "description": "air filter replacement",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-04-05",
       "difficulty": 3,
       "notes": null
@@ -139,6 +153,7 @@
       "assetId": 2,
       "description": "winterize equipment",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-04-20",
       "difficulty": 3,
       "notes": "Fuel stabilizer and drain"
@@ -148,6 +163,7 @@
       "assetId": 3,
       "description": "initial inspection",
       "status": "complete",
+      "statusId": "bQ2mLx9AaKp",
       "date": "2025-02-01",
       "difficulty": 3,
       "notes": "All components checked"
@@ -157,6 +173,7 @@
       "assetId": 3,
       "description": "blade inspection and sharpening",
       "status": "complete",
+      "statusId": "bQ2mLx9AaKp",
       "date": "2025-02-20",
       "difficulty": 3,
       "notes": null
@@ -165,7 +182,8 @@
       "id": "13",
       "assetId": 3,
       "description": "drive belt inspection",
-      "status": "inProcess",
+      "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-03-10",
       "difficulty": 3,
       "notes": "Slight wear observed"
@@ -175,6 +193,7 @@
       "assetId": 3,
       "description": "lubrication of moving parts",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-04-01",
       "difficulty": 3,
       "notes": null
@@ -184,6 +203,7 @@
       "assetId": 3,
       "description": "fastener and bolt tightening",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "date": "2025-04-15",
       "difficulty": 3,
       "notes": null
@@ -193,6 +213,7 @@
       "assetId": "1",
       "date": "2026-04-25",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "difficulty": "10 ",
       "description": "Add four on the floor",
       "notes": "Dan could do this in a minute"
@@ -202,6 +223,7 @@
       "assetId": "TVGfD4z0fZw",
       "date": "2026-04-25",
       "status": "pending",
+      "statusId": "89VfTWeESzs",
       "difficulty": "3",
       "description": "change oil",
       "notes": ""
