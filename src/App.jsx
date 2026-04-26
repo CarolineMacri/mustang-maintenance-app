@@ -1,8 +1,10 @@
 // src/App.jsx////
 
 import { useState, useEffect } from 'react';
+import { createRoot } from 'react-dom/client';
 
 import AppLayout from './layout/AppLayout';
+import AssetReport from './components/AssetReport';
 
 import './styles/global.css';
 import './styles/utilities.css';
@@ -186,6 +188,33 @@ function App() {
     }
   }
 
+  function handleOpenAssetReport() {
+    const reportWindow = window.open('', '_blank');
+
+    if (!reportWindow) {
+      alert('could not open window');
+      return;
+    }
+
+    const reportDocument = reportWindow.document;
+
+    reportDocument.title = 'Asset Report';
+
+    const root = reportDocument.createElement('div');
+    root.id = 'root';
+    reportDocument.body.appendChild(root);
+
+    document
+      .querySelectorAll('style, link[rel="stylesheet"]')
+      .forEach((node) => {
+        reportDocument.head.appendChild(node.cloneNode(true));
+      });
+
+    createRoot(root).render(
+      <AssetReport assets={assets} maintenance={maintenance} />,
+    );
+  }
+
   return (
     <AppLayout
       assets={assets}
@@ -199,6 +228,7 @@ function App() {
       onDeleteAsset={handleDeleteAsset}
       onSaveMaintenance={handleSaveMaintenance}
       onDeleteMaintenance={handleDeleteMaintenance}
+      onOpenAssetReport={handleOpenAssetReport}
     />
   );
 }
