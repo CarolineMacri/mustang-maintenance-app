@@ -12,6 +12,7 @@ import './styles/utilities.css';
 function App() {
   const [assets, setAssets] = useState([]);
   const [maintenance, setMaintenance] = useState([]);
+  const [maintenanceStatuses, setMaintenanceStatuses] = useState([]);
   const [selectedAssetId, setSelectedAssetId] = useState(null);
   const [isCreatingAsset, setIsCreatingAsset] = useState(false);
 
@@ -22,12 +23,17 @@ function App() {
         const maintenanceResponse = await fetch(
           'http://localhost:3001/maintenance',
         );
+        const statusesResponse = await fetch(
+          'http://localhost:3001/maintenanceStatuses',
+        );
 
         const assetsData = await assetsResponse.json();
         const maintenanceData = await maintenanceResponse.json();
+        const statusesData = await statusesResponse.json();
 
         setAssets(assetsData);
         setMaintenance(maintenanceData);
+        setMaintenanceStatuses(statusesData);
         setSelectedAssetId(assetsData[0]?.id ?? null);
       } catch (error) {
         alert('could not load asset and maintenance data');
