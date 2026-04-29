@@ -4,7 +4,12 @@ import { useState } from 'react';
 import styles from './MaintenanceTable.module.css';
 import Button from './Button';
 
-export default function MaintenanceTable({ records, onEdit, onDelete }) {
+export default function MaintenanceTable({
+  records,
+  maintenanceStatuses,
+  onEdit,
+  onDelete,
+}) {
   const [expandedRecordId, setExpandedRecordId] = useState(null);
 
   function handleToggle(recordId) {
@@ -26,6 +31,9 @@ export default function MaintenanceTable({ records, onEdit, onDelete }) {
       </div>
       <div className={styles.body}>
         {records.map((record) => {
+          const status = maintenanceStatuses.find(
+            (status) => String(status.id) === String(record.statusId),
+          );
           const isExpanded = expandedRecordId === record.id;
           const detailsId = `maintenance-notes-${record.id}`;
 
@@ -33,7 +41,7 @@ export default function MaintenanceTable({ records, onEdit, onDelete }) {
             <div key={record.id} className={styles.rowGroup}>
               <div className={styles.recordRow} role="row">
                 <div role="cell">{record.date}</div>
-                <div role="cell">{record.status}</div>
+                <div role="cell">{status?.name ?? ''}</div>
                 <div role="cell">{record.difficulty}</div>
                 <div role="cell">{record.description}</div>
                 <div role="cell" className={styles.arrowCell}>
