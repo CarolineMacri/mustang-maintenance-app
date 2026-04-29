@@ -194,6 +194,32 @@ function App() {
     }
   }
 
+  async function handleAddMaintenanceStatus(statusName) {
+    try {
+      const res = await fetch(`http://localhost:3001/maintenanceStatuses`, {
+        method: 'POST',
+        headers: {
+          'Content-type': 'application/json',
+        },
+        body: JSON.stringify({ name: statusName }),
+      });
+
+      if (!res.ok) {
+        throw new Error('Save failed');
+      }
+      const savedStatus = await res.json();
+
+      setMaintenanceStatuses((currentStatuses) => [
+        ...currentStatuses,
+        savedStatus,
+      ]);
+
+      return savedStatus;
+    } catch (error) {
+      alert('Could not save maintenance statues');
+      return null;
+    }
+  }
   function handleOpenAssetReport() {
     const reportWindow = window.open('', '_blank');
 
@@ -234,6 +260,7 @@ function App() {
       onDeleteAsset={handleDeleteAsset}
       onSaveMaintenance={handleSaveMaintenance}
       onDeleteMaintenance={handleDeleteMaintenance}
+      onAddMaintenanceStatus={handleAddMaintenanceStatus}
       onOpenAssetReport={handleOpenAssetReport}
     />
   );
