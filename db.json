@@ -62,18 +62,38 @@
     }
   ],
   "maintenanceStatuses": [
-    { "id": "89VfTWeESzs", "name": "pending" },
-    { "id": "bQ2mLx9AaKp", "name": "complete" },
-    { "id": "pR7nXc4TzLm", "name": "lent" },
-    { "id": "uH5sKd8QwNe", "name": "returned" }
+    {
+      "id": "89VfTWeESzs",
+      "name": "pending"
+    },
+    {
+      "id": "bQ2mLx9AaKp",
+      "name": "complete"
+    },
+    {
+      "id": "pR7nXc4TzLm",
+      "name": "lent"
+    },
+    {
+      "id": "pR72wXc4TzLm",
+      "name": "Carol Status"
+    },
+    {
+      "id": "uH5sKd8QwNe",
+      "name": "returned"
+    },
+    {
+      "name": "at Dan's",
+      "id": "aM8SL8UgGXY"
+    }
   ],
   "maintenance": [
     {
       "id": "1",
       "assetId": 1,
       "description": "oil and filter change xxxx",
-      "status": "pending",
-      "statusId": "89VfTWeESzs",
+      "status": "89VfTWeESzs",
+      "statusId": "bQ2mLx9AaKp",
       "date": "2025-01-10",
       "difficulty": 1,
       "notes": "Full synthetic oil cheapest at Costco"
@@ -82,8 +102,8 @@
       "id": "2",
       "assetId": 1,
       "description": "front brake pad replacement",
-      "status": "complete",
-      "statusId": "bQ2mLx9AaKp",
+      "status": "bQ2mLx9AaKp",
+      "statusId": "pR72wXc4TzLm",
       "date": "2025-02-15",
       "difficulty": 3,
       "notes": "Pads replaced, rotors good"
@@ -93,7 +113,7 @@
       "assetId": 1,
       "description": "annual safety inspection for s asdfjk;",
       "status": "pending",
-      "statusId": "89VfTWeESzs",
+      "statusId": "aM8SL8UgGXY",
       "date": "2025-03-20",
       "difficulty": 3,
       "notes": ""
@@ -103,10 +123,10 @@
       "assetId": 1,
       "description": "tire rotation",
       "status": "pending",
-      "statusId": "89VfTWeESzs",
+      "statusId": "aM8SL8UgGXY",
       "date": "2025-04-10",
       "difficulty": 3,
-      "notes": null
+      "notes": ""
     },
     {
       "id": "5",
