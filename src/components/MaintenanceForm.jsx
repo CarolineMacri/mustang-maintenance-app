@@ -7,14 +7,20 @@ import styles from './MaintenanceForm.module.css';
 function getFormValues(record) {
   return {
     date: record.date ?? '',
-    status: record.status ?? '',
+    statusId: record.statusId ?? '',
     difficulty: record.difficulty ?? '',
     description: record.description ?? '',
     notes: record.notes ?? '',
   };
 }
 
-function MaintenanceForm({ record, onCancel, onSave }) {
+function MaintenanceForm({
+  record,
+  maintenanceStatuses,
+  onAddMaintenanceStatus,
+  onCancel,
+  onSave,
+}) {
   const [formValues, setFormValues] = useState(getFormValues(record));
 
   useEffect(() => {
@@ -35,6 +41,26 @@ function MaintenanceForm({ record, onCancel, onSave }) {
       ...record,
       ...formValues,
     });
+  }
+  async function handleStatusChange(event) {
+    const { value } = event.target;
+    if (value === '__add_new__') {
+      const statusName = window.prompt('New maintenance status');
+
+      if (!statusName?.trim()) {
+        return;
+      }
+      const savedStatus = await onAddMaintenanceStatus(statusName.trim());
+
+      if (savedStatus) {
+        setFormValues((currentValues) => ({
+          ...currentValues,
+          statusId: savedStatus.id,
+        }));
+      }
+      return;
+    }
+    setFormValues((currentValues) => ({ ...currentValues, statusId: value }));
   }
 
   return (
@@ -58,13 +84,20 @@ function MaintenanceForm({ record, onCancel, onSave }) {
 
         <label className={styles.field}>
           <span>Status</span>
-          <input
+          <select
             className={styles.input}
-            type="text"
-            name="status"
-            value={formValues.status}
-            onChange={handleChange}
-          />
+            name="statusId"
+            value={formValues.statusId}
+            onChange={handleStatusChange}
+          >
+            <option value="">Select Value</option>
+            {maintenanceStatuses.map((status) => (
+              <option key={status.id} value={status.id}>
+                {status.name}
+              </option>
+            ))}
+            <option value="__add_new__">...add new status</option>
+          </select>
         </label>
         <label className={styles.field}>
           <span>Difficulty</span>
