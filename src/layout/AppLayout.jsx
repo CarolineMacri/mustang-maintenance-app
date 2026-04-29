@@ -18,6 +18,7 @@ export default function AppLayout({
   onDeleteAsset,
   onSaveMaintenance,
   onDeleteMaintenance,
+  onAddMaintenanceStatus,
   onOpenAssetReport,
 }) {
   return (
@@ -61,6 +62,7 @@ export default function AppLayout({
             selectedAssetId={selectedAssetId}
             onSaveMaintenance={onSaveMaintenance}
             onDeleteMaintenance={onDeleteMaintenance}
+            onAddMaintenanceStatus={onAddMaintenanceStatus}
           />
         </section>
       </main>
