@@ -65,6 +65,7 @@ export default function MaintenancePanel({
           <MaintenanceForm
             record={selectedRecord}
             maintenanceStatuses={maintenanceStatuses}
+            onAddMaintenanceStatus={onAddMaintenanceStatus}
             onCancel={handleCancel}
             onSave={handleSave}
           />

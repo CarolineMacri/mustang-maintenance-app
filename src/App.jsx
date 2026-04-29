@@ -253,6 +253,7 @@ function App() {
       selectedAsset={selectedAsset}
       selectedAssetId={selectedAsset ? selectedAssetId : ''}
       selectedMaintenanceRecords={selectedMaintenanceRecords}
+      maintenanceStatuses={maintenanceStatuses}
       isCreatingAsset={isCreatingAsset}
       onAddAsset={handleAddAsset}
       onSelectAsset={setSelectedAssetId}

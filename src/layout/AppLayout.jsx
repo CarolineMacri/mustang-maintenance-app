@@ -61,6 +61,7 @@ export default function AppLayout({
           <MaintenancePanel
             records={selectedMaintenanceRecords}
             selectedAssetId={selectedAssetId}
+            maintenanceStatuses={maintenanceStatuses}
             onSaveMaintenance={onSaveMaintenance}
             onDeleteMaintenance={onDeleteMaintenance}
             onAddMaintenanceStatus={onAddMaintenanceStatus}
