@@ -9,8 +9,10 @@ import Button from './Button';
 export default function MaintenancePanel({
   records = [],
   selectedAssetId,
+  maintenanceStatuses,
   onSaveMaintenance,
   onDeleteMaintenance,
+  onAddMaintenanceStatus,
 }) {
   const [selectedRecord, setSelectedRecord] = useState(null);
 
@@ -19,7 +21,8 @@ export default function MaintenancePanel({
       id: null,
       assetId: selectedAssetId,
       date: '',
-      status: '',
+      //status: '',//
+      statusId: '',
       difficulty: '',
       description: '',
       notes: '',
@@ -50,6 +53,7 @@ export default function MaintenancePanel({
         {records.length > 0 ? (
           <MaintenanceTable
             records={records}
+            maintenanceStatuses={maintenanceStatuses}
             onEdit={handleEdit}
             onDelete={onDeleteMaintenance}
           />
@@ -60,6 +64,7 @@ export default function MaintenancePanel({
         {selectedRecord ? (
           <MaintenanceForm
             record={selectedRecord}
+            maintenanceStatuses={maintenanceStatuses}
             onCancel={handleCancel}
             onSave={handleSave}
           />

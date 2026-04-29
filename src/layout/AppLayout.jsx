@@ -11,6 +11,7 @@ export default function AppLayout({
   selectedAsset,
   selectedAssetId,
   selectedMaintenanceRecords,
+  maintenanceStatuses,
   isCreatingAsset,
   onAddAsset,
   onSelectAsset,
