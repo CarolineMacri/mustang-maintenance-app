@@ -41,40 +41,43 @@ export default function AppLayout({
       {/* HEADER */}
       <header className={`${styles.header} chrome`}>
         <AppBrand />
+        <div className={styles.reportControls}>
+          <label className={styles.reportField}>
+            <span className={styles.reportLabel}>Status</span>
+            <select
+              className={styles.reportControl}
+              value={reportStatusFilter}
+              onChange={(e) => setReportStatusFilter(e.target.value)}
+            >
+              <option value="all">All</option>
+              <option value="pending">Pending</option>
+              <option value="lent">Lent</option>
+            </select>
+          </label>
 
-        <label>
-          Status
-          <select
-            value={reportStatusFilter}
-            onChange={(e) => setReportStatusFilter(e.target.value)}
-          >
-            <option value="all">All</option>
-            <option value="pending">Pending</option>
-            <option value="lent">Lent</option>
-          </select>
-        </label>
+          <label className={styles.reportField}>
+            <span className={styles.reportLabel}>Start</span>
+            <input
+              className={styles.reportControl}
+              type="date"
+              value={reportStartDate}
+              onChange={(e) => setReportStartDate(e.target.value)}
+            ></input>
+          </label>
+          <label className={styles.reportField}>
+            <span className={styles.reportlabel}>End</span>
+            <input
+              className={styles.reportControl}
+              type="date"
+              value={reportEndDate}
+              onChange={(e) => setReportEndDate(e.target.value)}
+            ></input>
+          </label>
 
-        <label>
-          Start
-          <input
-            type="date"
-            value={reportStartDate}
-            onChange={(e) => setReportStartDate(e.target.value)}
-          ></input>
-        </label>
-        <label>
-          End
-          <input
-            type="date"
-            value={reportEndDate}
-            onChange={(e) => setReportEndDate(e.target.value)}
-          ></input>
-        </label>
-
-        <Button role="secondary" onClick={handleOpenFilteredAssetReport}>
-          Asset Report
-        </Button>
-
+          <Button role="secondary" onClick={handleOpenFilteredAssetReport}>
+            Assets Report
+          </Button>
+        </div>
         <div className={styles.headerRight}>
           <AssetSelector
             assets={assets}

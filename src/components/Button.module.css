@@ -5,6 +5,7 @@
   align-items: center;
   justify-content: center;
   gap: var(--button-gap);
+  white-space: nowrap;
 
   padding: var(--button-padding-y-md) var(--button-padding-x-md);
 

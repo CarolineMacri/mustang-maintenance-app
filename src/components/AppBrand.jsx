@@ -1,5 +1,4 @@
 // src/components/AppBrand.jsx//
-
 import styles from './AppBrand.module.css';
 
 export default function AppBrand() {
@@ -12,7 +11,8 @@ export default function AppBrand() {
       </div>
 
       <div className={styles.textBlock}>
-        <span className={styles.title}>Mustang Maintenance</span>
+        <span className={styles.title}>Mustang</span>
+        <span className={styles.title}>Maintenance</span>
       </div>
     </div>
   );
