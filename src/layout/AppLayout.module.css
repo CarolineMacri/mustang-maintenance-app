@@ -1,4 +1,5 @@
-.app {  display: flex;
+.app {
+  display: flex;
   flex-direction: column;
   height: 100vh;
   padding: var(--space-md);
@@ -21,6 +22,33 @@
   gap: var(--space-sm);
 }
 
+.reportControls {
+  display: flex;
+  align-items: end;
+  gap: var(--space-sm);
+}
+
+.reportField {
+  display: grid;
+  gap: var(--space-xs);
+}
+
+.reportLabel {
+  color: var(--color-text-primary);
+  font-family: var(--font-primary);
+  font-style: italic;
+}
+
+.reportControl {
+  min-width: 140px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--color-bg-panel);
+  color: var(--color-text-primary);
+  border: var(--border-width) solid var(--color-chrome-mid);
+  border-radius: var(--panel-radius);
+  font-family: var(--font-primary);
+  font-style: italic;
+}
 /* MAIN LAYOUT */
 .main {
   display: flex;
