@@ -220,7 +220,11 @@ function App() {
       return null;
     }
   }
-  function handleOpenAssetReport() {
+  function handleOpenAssetReport({
+    statusFilter = 'all',
+    startDate = '',
+    endDate = '',
+  } = {}) {
     const reportWindow = window.open('', '_blank');
 
     if (!reportWindow) {
@@ -247,6 +251,9 @@ function App() {
         assets={assets}
         maintenance={maintenance}
         maintenanceStatuses={maintenanceStatuses}
+        statusFilter={statusFilter}
+        startDate={startDate}
+        endDate={endDate}
       />,
     );
   }
