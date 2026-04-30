@@ -52,9 +52,11 @@ function App() {
   const selectedMaintenanceRecords =
     selectedAssetId === null
       ? []
-      : maintenance.filter(
-          (record) => String(record.assetId) === String(selectedAssetId),
-        );
+      : maintenance
+          .filter(
+            (record) => String(record.assetId) === String(selectedAssetId),
+          )
+          .sort((a, b) => new Date(b.date) - new Date(a.date));
 
   function handleAddAsset() {
     setSelectedAssetId(null);
