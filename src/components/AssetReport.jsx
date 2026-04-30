@@ -1,7 +1,7 @@
 import styles from './AssetReport.module.css';
 
 function AssetReport({ assets, maintenance, maintenanceStatuses }) {
-  const sortedAssets = assets.sort((a, b) => a.make.localeCompare(b.make));
+  const sortedAssets = [...assets].sort((a, b) => a.make.localeCompare(b.make));
   return (
     <main className={styles.reportPage}>
       <section className={styles.reportPanel}>
