@@ -243,7 +243,11 @@ function App() {
       });
 
     createRoot(root).render(
-      <AssetReport assets={assets} maintenance={maintenance} />,
+      <AssetReport
+        assets={assets}
+        maintenance={maintenance}
+        maintenanceStatuses={maintenanceStatuses}
+      />,
     );
   }
 
