@@ -247,6 +247,15 @@
       "difficulty": "3",
       "description": "change oil",
       "notes": ""
+    },
+    {
+      "id": "_0fvnG2-G9w",
+      "assetId": "1",
+      "date": "2024-10-15",
+      "statusId": "89VfTWeESzs",
+      "difficulty": "2",
+      "description": "Bondo ",
+      "notes": "paint is Crystal blue"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

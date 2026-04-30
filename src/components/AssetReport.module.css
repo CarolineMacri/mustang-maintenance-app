@@ -36,20 +36,23 @@
   font-size: var(--font-size-report-subheading);
 }
 .reportBody {
-  padding: var(--space-md);
+  padding: var(--space-sm);
 }
 .reportTable {
   width: 100%;
   border-collapse: collapse;
+  border-radius: var(--panel-radius);
+  table-layout: fixed;
 }
 
 .reportTable th,
 .reportTable td {
-  border: 1px solid var(--color-report-border);
-  padding: var(--space-sm);
-  text-align: left;
+  padding: var(--space-xs);
 }
-
+.reportTable th:nth-child(-n + 2),
+.reportTable td:nth-child(-n + 2) {
+  width: 100px;
+}
 .reportTable th {
   background: var(--color-report-header-bg);
 }
