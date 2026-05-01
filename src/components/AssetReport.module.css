@@ -1,3 +1,12 @@
+.reportPage,
+.reportPanel,
+.reportHeader,
+.reportFooter,
+.reportTable th {
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
 .reportPage {
   min-height: 100vh;
   background: var(--color-report-page-bg);
@@ -81,11 +90,24 @@
 
   .reportPage {
     padding: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
   }
 
   .reportPanel {
     width: 100%;
     min-height: auto;
     border-radius: 0;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .reportHeader,
+  .reportFooter,
+  .reportTable th {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .reportHeader button {
+    display: none;
   }
 }

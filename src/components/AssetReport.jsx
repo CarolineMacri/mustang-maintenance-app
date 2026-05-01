@@ -20,7 +20,11 @@ function AssetReport({
         <header className={styles.reportHeader}>
           <h1>{title}</h1>
 
-          <button onClick={() => window.print()}>Print</button>
+          <button
+            onClick={(e) => e.currentTarget.ownerDocument.defaultView.print()}
+          >
+            Print
+          </button>
         </header>
 
         <div className={styles.reportBody}>
