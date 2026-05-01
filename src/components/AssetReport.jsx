@@ -13,8 +13,10 @@ function AssetReport({
     <main className={styles.reportPage}>
       <section className={styles.reportPanel}>
         <header className={styles.reportHeader}>
-          <h1>All Assets Report</h1>
-          <p>Generated Report Preview</p>
+          <h1>
+            {statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)}{' '}
+            Assets Report
+          </h1>
         </header>
 
         <div className={styles.reportBody}>
@@ -79,10 +81,6 @@ function AssetReport({
             );
           })}
         </div>
-
-        <footer className={styles.reportFooter}>
-          <span>Total Assets: {assets.length}</span>
-        </footer>
       </section>
     </main>
   );
