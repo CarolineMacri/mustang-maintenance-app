@@ -9,14 +9,16 @@ function AssetReport({
   endDate = '',
 }) {
   const sortedAssets = [...assets].sort((a, b) => a.make.localeCompare(b.make));
+  const title =
+    statusFilter.charAt(0).toUpperCase() +
+    statusFilter.slice(1) +
+    ' Asset Maintenance ' +
+    (startDate ? `(${startDate.toString()} to ${endDate.toString()})` : '');
   return (
     <main className={styles.reportPage}>
       <section className={styles.reportPanel}>
         <header className={styles.reportHeader}>
-          <h1>
-            {statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1)}{' '}
-            Assets Report
-          </h1>
+          <h1>{title}</h1>
         </header>
 
         <div className={styles.reportBody}>
