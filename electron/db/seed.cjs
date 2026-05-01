@@ -51,7 +51,7 @@ function seedDatabase(db) {
       const result = insertStatus.run({
         name: status.name ?? '',
       });
-      statusIdMap.set(String(status.id), result.lastInserRowid);
+      statusIdMap.set(String(status.id), result.lastInsertRowid);
     }
 
     for (const record of data.maintenance) {
