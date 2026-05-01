@@ -19,6 +19,8 @@ function AssetReport({
       <section className={styles.reportPanel}>
         <header className={styles.reportHeader}>
           <h1>{title}</h1>
+
+          <button onClick={() => window.print()}>Print</button>
         </header>
 
         <div className={styles.reportBody}>
