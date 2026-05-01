@@ -19,6 +19,20 @@ function App() {
   useEffect(() => {
     async function loadData() {
       try {
+        if (window.mustangApi?.getAssets) {
+          const sqliteAssets = await window.mustangApi.getAssets();
+          console.log('SQLite Assets: ', sqliteAssets);
+        }
+        if (window.mustangApi?.getMaintenanceStatuses) {
+          const sqliteStatuses =
+            await window.mustangApi.getMaintenanceStatuses();
+          console.log('SQLite Statuses: ', sqliteStatuses);
+        }
+        if (window.mustangApi?.getMaintenance) {
+          const sqliteMaintenance = await window.mustangApi.getMaintenance();
+          console.log('SQLite Maintenance: ', sqliteMaintenance);
+        }
+
         const assetsResponse = await fetch('http://localhost:3001/assets');
         const maintenanceResponse = await fetch(
           'http://localhost:3001/maintenance',
