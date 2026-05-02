@@ -94,10 +94,9 @@ function App() {
     if (!shouldDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/assets/${assetId}`, {
-        method: 'DELETE',
-      });
-      if (!res.ok) {
+      const result = await window.mustangApi.deleteAsset(assetId);
+
+      if (!result.success) {
         throw new Error('Delete failed');
       }
 

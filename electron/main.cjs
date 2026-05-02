@@ -19,7 +19,6 @@ ipcMain.handle('assets:getAll', () => {
 });
 
 ipcMain.handle('assets:add', (event, asset) => {
-  console.log(JSON.stringify(asset) + 'to be added');
   const db = getDatabase();
 
   const result = db
@@ -41,6 +40,15 @@ ipcMain.handle('assets:add', (event, asset) => {
   return db
     .prepare(`SELECT * FROM assets WHERE id=?`)
     .get(result.lastInsertRowid);
+});
+
+ipcMain.handle('assets:delete', (event, assetId) => {
+  const db = getDatabase();
+  const result = db.prepare(`DELETE FROM assets WHERE id=?`).run(assetId);
+
+  return {
+    success: result.changes > 0,
+  };
 });
 
 ipcMain.handle('maintenanceStatuses:getAll', () => {
