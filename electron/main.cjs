@@ -18,6 +18,31 @@ ipcMain.handle('assets:getAll', () => {
     .all();
 });
 
+ipcMain.handle('assets:add', (event, asset) => {
+  console.log(JSON.stringify(asset) + 'to be added');
+  const db = getDatabase();
+
+  const result = db
+    .prepare(
+      ` INSERT INTO assets (name, make, model, vinSerialNo, part1, part2, part3, notes)
+      VALUES(@name, @make, @model, @vinSerialNo, @part1, @part2, @part3, @notes )`,
+    )
+    .run({
+      name: asset.name,
+      make: asset.make ?? '',
+      model: asset.model ?? '',
+      vinSerialNo: asset.vinSerialNo ?? '',
+      part1: asset.part1 ?? '',
+      part2: asset.part2 ?? '',
+      part3: asset.part3 ?? '',
+      notes: asset.notes ?? '',
+    });
+
+  return db
+    .prepare(`SELECT * FROM assets WHERE id=?`)
+    .get(result.lastInsertRowid);
+});
+
 ipcMain.handle('maintenanceStatuses:getAll', () => {
   const db = getDatabase();
 

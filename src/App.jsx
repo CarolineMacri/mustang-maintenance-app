@@ -19,31 +19,9 @@ function App() {
   useEffect(() => {
     async function loadData() {
       try {
-        if (window.mustangApi?.getAssets) {
-          const sqliteAssets = await window.mustangApi.getAssets();
-          console.log('SQLite Assets: ', sqliteAssets);
-        }
-        if (window.mustangApi?.getMaintenanceStatuses) {
-          const sqliteStatuses =
-            await window.mustangApi.getMaintenanceStatuses();
-          console.log('SQLite Statuses: ', sqliteStatuses);
-        }
-        if (window.mustangApi?.getMaintenance) {
-          const sqliteMaintenance = await window.mustangApi.getMaintenance();
-          console.log('SQLite Maintenance: ', sqliteMaintenance);
-        }
-
-        const assetsResponse = await fetch('http://localhost:3001/assets');
-        const maintenanceResponse = await fetch(
-          'http://localhost:3001/maintenance',
-        );
-        const statusesResponse = await fetch(
-          'http://localhost:3001/maintenanceStatuses',
-        );
-
-        const assetsData = await assetsResponse.json();
-        const maintenanceData = await maintenanceResponse.json();
-        const statusesData = await statusesResponse.json();
+        const assetsData = await window.mustangApi.getAssets();
+        const maintenanceData = await window.mustangApi.getMaintenance();
+        const statusesData = await window.mustangApi.getMaintenanceStatuses();
 
         setAssets(assetsData);
         setMaintenance(maintenanceData);
@@ -53,6 +31,7 @@ function App() {
         alert('could not load asset and maintenance data');
         setAssets([]);
         setMaintenance([]);
+        setMaintenanceStatuses([]);
         setSelectedAssetId(null);
       }
     }
@@ -81,39 +60,21 @@ function App() {
     try {
       const isNewAsset = assetToSave.id == null;
 
-      const res = await fetch(
-        isNewAsset
-          ? 'http://localhost:3001/assets'
-          : `http://localhost:3001/assets/${assetToSave.id}`,
-        {
-          method: isNewAsset ? 'POST' : 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(assetToSave),
-        },
-      );
-      if (!res.ok) {
-        throw new Error('Save Failed');
+      if (!isNewAsset) {
+        alert(
+          'Editing existing assets is still using the old handler - Next step!',
+        );
+        return;
       }
 
-      const savedAssetData = await res.json();
+      const savedAsset = await window.mustangApi.addAsset(assetToSave);
 
-      const savedAsset = {
-        ...savedAssetData,
-      };
-
-      setAssets((currentAssets) =>
-        isNewAsset
-          ? [...currentAssets, savedAsset]
-          : currentAssets.map((asset) =>
-              asset.id === savedAsset.id ? savedAsset : asset,
-            ),
-      );
+      setAssets((currentAssets) => [...currentAssets, savedAsset]);
 
       setSelectedAssetId(savedAsset.id);
       setIsCreatingAsset(false);
     } catch (error) {
+      console.error(error);
       alert('could not save asset');
     }
   }
