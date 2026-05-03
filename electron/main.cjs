@@ -53,6 +53,13 @@ ipcMain.handle('assets:update', (event, asset) => {
 });
 
 ipcMain.handle('assets:add', (event, asset) => {
+  try {
+    getDatabase();
+    console.log('Database loaded successfully');
+  } catch (error) {
+    console.error('Database failed to load:', error);
+  }
+
   const db = getDatabase();
 
   const result = db
@@ -221,7 +228,23 @@ function createWindow() {
     },
   });
 
-  win.loadFile(path.join(__dirname, '../dist/index.html'));
+  const indexPath = path.join(app.getAppPath(), 'dist', 'index.html');
+
+  console.log('app.getAppPath():', app.getAppPath());
+  console.log('__dirname:', __dirname);
+  console.log('Loading:', indexPath);
+
+  win.loadFile(indexPath);
+
+  // win.webContents.openDevTools();
+
+  win.webContents.on('did-fail-load', (event, errorCode, errorDescription) => {
+    console.log('Failed to load:', errorCode, errorDescription);
+  });
+
+  win.webContents.on('render-process-gone', (event, details) => {
+    console.log('Renderer process gone:', details);
+  });
 }
 
 app.whenReady().then(createWindow);
