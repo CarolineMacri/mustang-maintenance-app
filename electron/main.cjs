@@ -100,6 +100,22 @@ ipcMain.handle('maintenanceStatuses:getAll', () => {
     .all();
 });
 
+ipcMain.handle('maintenanceStatuses:add', (event, statusName) => {
+  const db = getDatabase();
+  const result = db
+    .prepare(
+      /*sql*/ `
+      INSERT INTO maintenance_statuses (name)
+      VALUES (?)
+      `,
+    )
+    .run(statusName);
+
+  return db
+    .prepare(/*sql*/ `SELECT * FROM maintenance_statuses WHERE id=?`)
+    .get(result.lastInsertRow);
+});
+
 ipcMain.handle('maintenance:getAll', () => {
   const db = getDatabase();
 

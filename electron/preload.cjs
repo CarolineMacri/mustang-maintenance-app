@@ -15,4 +15,6 @@ contextBridge.exposeInMainWorld('mustangApi', {
 
   getMaintenanceStatuses: () =>
     ipcRenderer.invoke('maintenanceStatuses:getAll'),
+  addMaintenanceStatus: (statusName) =>
+    ipcRenderer.invoke('maintenanceStatuses:add', statusName),
 });
