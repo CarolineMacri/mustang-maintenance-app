@@ -102,7 +102,7 @@ function App() {
       }
 
       const savedAsset = await window.mustangApi.addAsset(assetToSave);
-      const safeSavedAsst = getSaveAsset(savedAsset);
+      const safeSavedAsset = getSaveAsset(savedAsset);
 
       setAssets((currentAssets) => [...currentAssets, safeSavedAsset]);
 
