@@ -140,17 +140,13 @@ function App() {
   async function handleDeleteMaintenance(recordId) {
     const shouldDelete = window.confirm('Delete this maintence record');
 
-    if (!shouldDelete) {
-      return;
-    }
+    if (!shouldDelete) return;
 
     try {
-      const res = await fetch(`http://localhost:3001/maintenance/${recordId}`, {
-        method: 'DELETE',
-      });
+      const result = await window.mustangApi.deleteMaintenance(recordId);
 
-      if (!res.ok) {
-        throw new Error('Delete Failed');
+      if (!result.success) {
+        throw new Error('Delete failed');
       }
 
       setMaintenance((currentMaintenance) =>

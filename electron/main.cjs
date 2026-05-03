@@ -152,6 +152,17 @@ ipcMain.handle('maintenance:add', (event, record) => {
     .get(result.lastInsertRowid);
 });
 
+ipcMain.handle('maintenance:delete', (event, maintenanceId) => {
+  const db = getDatabase();
+  const result = db
+    .prepare(/*sql */ `DELETE FROM maintenance WHERE id=?`)
+    .run(maintenanceId);
+
+  return {
+    success: result.changes > 0,
+  };
+});
+
 function createWindow() {
   getDatabase();
   const win = new BrowserWindow({
