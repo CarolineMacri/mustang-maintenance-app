@@ -123,7 +123,7 @@ function App() {
 
       const savedRecord = isNewRecord
         ? await window.mustangApi.addMaintenance(recordToSave)
-        : null;
+        : await window.mustangApi.updateMaintenance(recordToSave);
 
       setMaintenance((currentMaintenance) =>
         isNewRecord

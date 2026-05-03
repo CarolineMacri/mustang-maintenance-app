@@ -114,6 +114,36 @@ ipcMain.handle('maintenance:getAll', () => {
     .all();
 });
 
+ipcMain.handle('maintenance:update', (event, record) => {
+  const db = getDatabase();
+
+  const updateRecordSql = /* sql */ `
+  UPDATE maintenance
+  SET
+    assetId = @assetId,
+    statusId = @statusId,
+    date = @date,
+    difficulty = @difficulty,
+    description = @description,
+    notes = @notes
+  WHERE id = @id
+`;
+
+  const result = db.prepare(updateRecordSql).run({
+    id: record.id,
+    assetId: record.assetId,
+    statusId: record.statusId ?? '',
+    date: record.date ?? '',
+    difficulty: record.difficulty ?? null,
+    description: record.description ?? '',
+    notes: record.notes ?? '',
+  });
+
+  return db
+    .prepare(/*sql*/ `SELECT * FROM maintenance WHERE id= ? `)
+    .get(record.id);
+});
+
 ipcMain.handle('maintenance:add', (event, record) => {
   const db = getDatabase();
 
