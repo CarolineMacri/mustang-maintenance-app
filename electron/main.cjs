@@ -18,18 +18,53 @@ ipcMain.handle('assets:getAll', () => {
     .all();
 });
 
+ipcMain.handle('assets:update', (event, asset) => {
+  const db = getDatabase();
+
+  const updateAssetSql = /* sql */ `
+  UPDATE assets
+  SET
+    name = @name,
+    make = @make,
+    model = @model,
+    year = @year,
+    vinSerialNo = @vinSerialNo,
+    part1 = @part1,
+    part2 = @part2,
+    part3 = @part3,
+    notes = @notes
+  WHERE id = @id
+`;
+
+  const result = db.prepare(updateAssetSql).run({
+    id: asset.id,
+    name: asset.name,
+    make: asset.make ?? '',
+    model: asset.model ?? '',
+    year: asset.year ?? null,
+    vinSerialNo: asset.vinSerialNo ?? '',
+    part1: asset.part1 ?? '',
+    part2: asset.part2 ?? '',
+    part3: asset.part3 ?? '',
+    notes: asset.notes ?? '',
+  });
+
+  return db.prepare(/*sql*/ `SELECT * FROM assets WHERE id= ? `).get(asset.id);
+});
+
 ipcMain.handle('assets:add', (event, asset) => {
   const db = getDatabase();
 
   const result = db
     .prepare(
-      ` INSERT INTO assets (name, make, model, vinSerialNo, part1, part2, part3, notes)
-      VALUES(@name, @make, @model, @vinSerialNo, @part1, @part2, @part3, @notes )`,
+      /* sql */ ` INSERT INTO assets (name, make, model, year, vinSerialNo, part1, part2, part3, notes)
+      VALUES(@name, @make, @model, @year, @vinSerialNo, @part1, @part2, @part3, @notes )`,
     )
     .run({
       name: asset.name,
       make: asset.make ?? '',
       model: asset.model ?? '',
+      year: asset.year ?? null,
       vinSerialNo: asset.vinSerialNo ?? '',
       part1: asset.part1 ?? '',
       part2: asset.part2 ?? '',
@@ -57,9 +92,9 @@ ipcMain.handle('maintenanceStatuses:getAll', () => {
   return db
     .prepare(
       `
-    SELECT *
-    FROM maintenance_statuses
-    ORDER BY name
+      SELECT * 
+      FROM maintenance_statuses
+      ORDER BY name
     `,
     )
     .all();

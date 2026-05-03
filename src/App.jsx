@@ -61,9 +61,14 @@ function App() {
       const isNewAsset = assetToSave.id == null;
 
       if (!isNewAsset) {
-        alert(
-          'Editing existing assets is still using the old handler - Next step!',
+        const savedAsset = await window.mustangApi.updateAsset(assetToSave);
+        setAssets((currentAssets) =>
+          currentAssets.map((asset) =>
+            String(asset.id) === String(savedAsset.id) ? savedAsset : asset,
+          ),
         );
+        setSelectedAssetId(savedAsset.id);
+        setIsCreatingAsset(false);
         return;
       }
 
