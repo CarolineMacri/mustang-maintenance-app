@@ -6,7 +6,9 @@ contextBridge.exposeInMainWorld('mustangApi', {
   updateAsset: (asset) => ipcRenderer.invoke('assets:update', asset),
   deleteAsset: (assetId) => ipcRenderer.invoke('assets:delete', assetId),
 
+  getMaintenance: () => ipcRenderer.invoke('maintenance:getAll'),
+  addMaintenance: (record) => ipcRenderer.invoke('maintenance:add', record),
+
   getMaintenanceStatuses: () =>
     ipcRenderer.invoke('maintenanceStatuses:getAll'),
-  getMaintenance: () => ipcRenderer.invoke('maintenance:getAll'),
 });

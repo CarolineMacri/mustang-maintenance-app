@@ -121,23 +121,9 @@ function App() {
     try {
       const isNewRecord = recordToSave.id == null;
 
-      const res = await fetch(
-        isNewRecord
-          ? `http://localhost:3001/maintenance`
-          : `http://localhost:3001/maintenance/${recordToSave.id}`,
-        {
-          method: isNewRecord ? 'POST' : 'PATCH',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(recordToSave),
-        },
-      );
-      if (!res.ok) {
-        throw new Error('Save Failed');
-      }
-
-      const savedRecord = await res.json();
+      const savedRecord = isNewRecord
+        ? await window.mustangApi.addMaintenance(recordToSave)
+        : null;
 
       setMaintenance((currentMaintenance) =>
         isNewRecord
@@ -147,7 +133,7 @@ function App() {
             ),
       );
     } catch (error) {
-      alert('could not save maintenance record');
+      alert('could not save maintenance record', error);
     }
   }
 

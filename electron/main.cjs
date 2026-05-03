@@ -114,6 +114,44 @@ ipcMain.handle('maintenance:getAll', () => {
     .all();
 });
 
+ipcMain.handle('maintenance:add', (event, record) => {
+  const db = getDatabase();
+
+  const result = db
+    .prepare(
+      /* sql */ `
+    INSERT INTO maintenance (
+      assetId,
+      statusId,
+      date,
+      difficulty,
+      description,
+      notes
+    )
+    VALUES (
+        @assetId,
+        @statusId,
+        @date,
+        @difficulty,
+        @description,
+        @notes
+      )
+      `,
+    )
+    .run({
+      assetId: record.assetId,
+      statusId: record.statusId ?? null,
+      date: record.date ?? '',
+      difficulty: record.difficulty ?? '',
+      description: record.description ?? '',
+      notes: record.notes ?? '',
+    });
+
+  return db
+    .prepare(/*sql*/ `SELECT * FROM maintenance WHERE id=?`)
+    .get(result.lastInsertRowid);
+});
+
 function createWindow() {
   getDatabase();
   const win = new BrowserWindow({
