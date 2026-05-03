@@ -115,7 +115,7 @@ function MaintenanceForm({
             className={styles.input}
             type="text"
             name="description"
-            value={formValues.description}
+            value={formValues.description ?? ''}
             onChange={handleChange}
           />
         </label>
@@ -124,7 +124,7 @@ function MaintenanceForm({
           <textarea
             className={styles.textarea}
             name="notes"
-            value={formValues.notes}
+            value={formValues.notes ?? ''}
             onChange={handleChange}
           />
         </label>

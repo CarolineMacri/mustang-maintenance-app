@@ -51,7 +51,7 @@ export default function AssetPanel({
     }
 
     setFormValues(getFormValues(selectedAsset));
-  }, [selectedAsset]);
+  }, [selectedAsset, isCreating]);
 
   const isEmpty = !selectedAsset && !isCreating;
 
@@ -75,9 +75,6 @@ export default function AssetPanel({
       year: formValues.year === '' ? null : Number(formValues.year),
     };
 
-    alert(
-      `${isCreating ? 'New' : 'updated'}Asset: \n${JSON.stringify(assetToSave, null, 2)} `,
-    );
     onSave?.(assetToSave);
   }
 
@@ -108,7 +105,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="name"
-                value={formValues.name}
+                value={formValues.name ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -119,7 +116,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="make"
-                value={formValues.make}
+                value={formValues.make ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -129,7 +126,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="model"
-                value={formValues.model}
+                value={formValues.model ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -139,7 +136,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="number"
                 name="year"
-                value={formValues.year}
+                value={formValues.year ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -149,7 +146,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="vinSerialNo"
-                value={formValues.vinSerialNo}
+                value={formValues.vinSerialNo ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -159,7 +156,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="part1"
-                value={formValues.part1}
+                value={formValues.part1 ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -169,7 +166,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="part2"
-                value={formValues.part2}
+                value={formValues.part2 ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -179,7 +176,7 @@ export default function AssetPanel({
                 className={styles.input}
                 type="text"
                 name="part3"
-                value={formValues.part3}
+                value={formValues.part3 ?? ''}
                 onChange={handleChange}
               />
             </label>
@@ -188,7 +185,7 @@ export default function AssetPanel({
               <textarea
                 className={styles.textarea}
                 name="notes"
-                value={formValues.notes}
+                value={formValues.notes ?? ''}
                 onChange={handleChange}
               />
             </label>

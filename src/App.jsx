@@ -9,6 +9,32 @@ import AssetReport from './components/AssetReport';
 import './styles/global.css';
 import './styles/utilities.css';
 
+function getSafeAsset(asset) {
+  return {
+    ...asset,
+    name: asset.name ?? '',
+    make: asset.make ?? '',
+    model: asset.model ?? '',
+    year: asset.year != null ? String(asset.year) : '',
+    vinSerialNo: asset.vinSerialNo ?? '',
+    part1: asset.part1 ?? '',
+    part2: asset.part2 ?? '',
+    part3: asset.part3 ?? '',
+    notes: asset.notes ?? '',
+  };
+}
+
+function getSafeMaintenance(record) {
+  return {
+    ...record,
+    date: record.date ?? '',
+    statusId: record.statusId ?? '',
+    difficulty: record.difficulty ?? '',
+    description: record.description ?? '',
+    notes: record.notes ?? '',
+  };
+}
+
 function App() {
   const [assets, setAssets] = useState([]);
   const [maintenance, setMaintenance] = useState([]);
@@ -23,8 +49,8 @@ function App() {
         const maintenanceData = await window.mustangApi.getMaintenance();
         const statusesData = await window.mustangApi.getMaintenanceStatuses();
 
-        setAssets(assetsData);
-        setMaintenance(maintenanceData);
+        setAssets(assetsData.map(getSafeAsset));
+        setMaintenance(maintenanceData.map(getSafeMaintenance));
         setMaintenanceStatuses(statusesData);
         setSelectedAssetId(assetsData[0]?.id ?? null);
       } catch (error) {
@@ -62,21 +88,25 @@ function App() {
 
       if (!isNewAsset) {
         const savedAsset = await window.mustangApi.updateAsset(assetToSave);
+        const safeSavedAsset = getSafeAsset(savedAsset);
         setAssets((currentAssets) =>
           currentAssets.map((asset) =>
-            String(asset.id) === String(savedAsset.id) ? savedAsset : asset,
+            String(asset.id) === String(safeSavedAsset.id)
+              ? safeSavedAsset
+              : asset,
           ),
         );
-        setSelectedAssetId(savedAsset.id);
+        setSelectedAssetId(safeSavedAsset.id);
         setIsCreatingAsset(false);
         return;
       }
 
       const savedAsset = await window.mustangApi.addAsset(assetToSave);
+      const safeSavedAsst = getSaveAsset(savedAsset);
 
-      setAssets((currentAssets) => [...currentAssets, savedAsset]);
+      setAssets((currentAssets) => [...currentAssets, safeSavedAsset]);
 
-      setSelectedAssetId(savedAsset.id);
+      setSelectedAssetId(safeSavedAsset.id);
       setIsCreatingAsset(false);
     } catch (error) {
       console.error(error);
@@ -125,11 +155,12 @@ function App() {
         ? await window.mustangApi.addMaintenance(recordToSave)
         : await window.mustangApi.updateMaintenance(recordToSave);
 
+      const safeSavedRecord = getSafeMaintenance(savedRecord);
       setMaintenance((currentMaintenance) =>
         isNewRecord
-          ? [...currentMaintenance, savedRecord]
+          ? [...currentMaintenance, safeSavedRecord]
           : currentMaintenance.map((record) =>
-              record.id === savedRecord.id ? savedRecord : record,
+              record.id === safeSavedRecord.id ? safeSavedRecord : record,
             ),
       );
     } catch (error) {
