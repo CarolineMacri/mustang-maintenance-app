@@ -22,6 +22,8 @@ function MaintenanceForm({
   onSave,
 }) {
   const [formValues, setFormValues] = useState(getFormValues(record));
+  const [newStatusName, setNewStatusName] = useState('');
+  const [isAddingStatus, setIsAddingStatus] = useState(false);
 
   useEffect(() => {
     setFormValues(getFormValues(record));
@@ -45,22 +47,30 @@ function MaintenanceForm({
   async function handleStatusChange(event) {
     const { value } = event.target;
     if (value === '__add_new__') {
-      const statusName = window.prompt('New maintenance status');
-
-      if (!statusName?.trim()) {
-        return;
-      }
-      const savedStatus = await onAddMaintenanceStatus(statusName.trim());
-
-      if (savedStatus) {
-        setFormValues((currentValues) => ({
-          ...currentValues,
-          statusId: savedStatus.id,
-        }));
-      }
+      setIsAddingStatus(true);
+      setNewStatusName('');
       return;
     }
+
     setFormValues((currentValues) => ({ ...currentValues, statusId: value }));
+  }
+
+  async function handleSaveNewStatus() {
+    const trimmedName = newStatusName.trim();
+
+    if (!trimmedName) return;
+
+    const savedStatus = await onAddMaintenanceStatus(trimmedName);
+
+    if (savedStatus) {
+      setFormValues((currentValues) => ({
+        ...currentValues,
+        statusId: savedStatus.id,
+      }));
+
+      setIsAddingStatus(false);
+      setNewStatusName('');
+    }
   }
 
   return (
@@ -96,8 +106,28 @@ function MaintenanceForm({
                 {status.name}
               </option>
             ))}
+
             <option value="__add_new__">...add new status</option>
           </select>
+          {isAddingStatus && (
+            <div className={styles.field}>
+              <span>New Status Name</span>
+              <input
+                className={styles.input}
+                type="text"
+                value={newStatusName}
+                onChange={(event) => setNewStatusName(event.target.value)}
+              />
+
+              <Button
+                type="button"
+                role="secondary"
+                onClick={handleSaveNewStatus}
+              >
+                Add Status
+              </Button>
+            </div>
+          )}
         </label>
         <label className={styles.field}>
           <span>Difficulty</span>
@@ -130,7 +160,7 @@ function MaintenanceForm({
         </label>
 
         <div className={styles.actions}>
-          <Button role="secondary" onClick={onCancel}>
+          <Button type="button" role="secondary" onClick={onCancel}>
             Cancel
           </Button>
           <Button type="submit" role="primary">

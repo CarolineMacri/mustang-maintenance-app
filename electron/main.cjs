@@ -113,7 +113,7 @@ ipcMain.handle('maintenanceStatuses:add', (event, statusName) => {
 
   return db
     .prepare(/*sql*/ `SELECT * FROM maintenance_statuses WHERE id=?`)
-    .get(result.lastInsertRow);
+    .get(result.lastInsertRowid);
 });
 
 ipcMain.handle('maintenance:getAll', () => {
