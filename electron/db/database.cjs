@@ -3,8 +3,6 @@ const { app } = require('electron');
 const Database = require('better-sqlite3');
 
 const { createSchema } = require('./schema.cjs');
-const { seedDatabase } = require('./seed.cjs');
-
 
 let db;
 
@@ -20,7 +18,6 @@ function getDatabase() {
   db.pragma('foreign_keys = ON');
 
   createSchema(db);
-  seedDatabase(db);
 
   return db;
 }
